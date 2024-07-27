@@ -60,8 +60,8 @@ export default function Sidebar() {
         </button>
       </Drawer.Trigger>
       <Drawer.Portal>
-        <Drawer.Overlay className="fixed inset-0 bg-black/40" />
-        <Drawer.Content className="bg-white flex flex-col rounded-t-[10px] h-full w-[80vw] md:w-[400px] mt-24 fixed bottom-0 left-0">
+        <Drawer.Overlay className="fixed inset-0 bg-black/40 z-[2]" />
+        <Drawer.Content className="bg-white flex flex-col rounded-t-[10px] h-full w-[80vw] md:w-[400px] mt-24 fixed bottom-0 left-0 z-[3]">
           <nav className="p-4 bg-white flex-1 h-full">
             <div className="max-w-md mx-auto lg:pl-4">
               <Drawer.Title className="font-semibold lg:text-[20px] mb-6">
