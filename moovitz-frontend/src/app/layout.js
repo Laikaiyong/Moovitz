@@ -2,7 +2,6 @@ import { Poppins } from "next/font/google";
 import { Oxygen } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
-import Sidebar from "@/components/custom/Sidebar";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
@@ -25,8 +24,7 @@ export default function RootLayout({ children }) {
     <html lang="en">
       <body className={poppins.className}>
         <Providers>
-          {/*<Sidebar />*/}
-          {children}
+        {children}
         </Providers>
       </body>
     </html>

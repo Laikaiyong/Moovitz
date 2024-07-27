@@ -16,17 +16,17 @@ export default function Sidebar() {
       <Drawer.Portal>
         <Drawer.Overlay className="fixed inset-0 bg-black/40" />
         <Drawer.Content className="bg-white flex flex-col rounded-t-[10px] h-full w-[80vw] md:w-[400px] mt-24 fixed bottom-0 left-0">
-          <nav className="p-4 bg-[#1C1C1C] flex-1 h-full">
+          <nav className="p-4 bg-white flex-1 h-full">
             <div className="max-w-md mx-auto lg:pl-4">
-              <Drawer.Title className="font-medium mb-6">
-                What&apos;s up?
+              <Drawer.Title className="font-semibold lg:text-[20px] mb-6">
+                Typescript is superior than Javascript
               </Drawer.Title>
               <div className="flex flex-col items-center text-center justify-center space-y-4">
                 <Avatar className="w-[60px] h-[60px] lg:w-[100px] lg:h-[100px]">
                   <AvatarImage src="https://github.com/shadcn.png" />
                   <AvatarFallback>CN</AvatarFallback>
                 </Avatar>
-                <p className="text-sm lg:text-lg">
+                <p className="text-sm lg:text-lg text-black">
                   0x_drtanhaoxiang
                 </p>
               </div>
@@ -42,22 +42,22 @@ export default function Sidebar() {
                     {/* <ConnectButton /> */}
                   </li>
                   <li>
-                    <a href="/profile" className="flex items-center space-x-2 text-white hover:text-gray-200">
+                    <a href="/profile" className="flex items-center space-x-2 text-black hover:text-blue-500 font-semibold">
                       <span>Profile</span>
                     </a>
                   </li>
                   <li>
-                  <a href="/transaction" className="flex items-center space-x-2 text-white hover:text-gray-200">
+                  <a href="/transaction" className="flex items-center space-x-2 text-black hover:text-blue-500 font-semibold">
                       <span>Transactions</span>
                     </a>
                   </li>
                   <li>
-                    <a href="/transport" className="flex items-center space-x-2 text-white hover:text-gray-200">
+                    <a href="/transport" className="flex items-center space-x-2 text-black  hover:text-blue-500 font-semibold">
                       <span>Transportation</span>
                     </a>
                   </li>
                   <li>
-                    <a href="/project" className="flex items-center space-x-2 text-white hover:text-gray-200">
+                    <a href="/project" className="flex items-center space-x-2 text-black hover:text-blue-500 font-semibold">
                       <span>Projects</span>
                     </a>
                   </li>
