@@ -5,11 +5,6 @@ import { Drawer } from "vaul";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RiMenu2Line } from "react-icons/ri";
 import { ConnectButton } from "@mysten/dapp-kit";
-import {
-  Popover,
-  PopoverContent,
-  PopoverTrigger,
-} from "@/components/custom/popover";
 import { Transaction } from "@mysten/sui/transactions";
 import { useSuiClient } from "@mysten/dapp-kit";
 import { useEnokiFlow, useZkLogin } from "@mysten/enoki/react";
@@ -17,6 +12,7 @@ import { getFaucetHost, requestSuiFromFaucetV0 } from "@mysten/sui/faucet";
 import { toast } from "sonner";
 import { BalanceChange } from "@mysten/sui/client";
 import { LoaderCircle, ExternalLink } from "lucide-react";
+
 
 export default function Sidebar() {
   const client = useSuiClient(); // The SuiClient instance
@@ -65,7 +61,7 @@ export default function Sidebar() {
           <nav className="p-4 bg-white flex-1 h-full">
             <div className="max-w-md mx-auto lg:pl-4">
               <Drawer.Title className="font-semibold lg:text-[20px] mb-6">
-                Typescript is superior than Javascript
+                Moovitz
               </Drawer.Title>
               <div className="flex flex-col items-center text-center justify-center space-y-4">
                 <Avatar className="w-[60px] h-[60px] lg:w-[100px] lg:h-[100px]">

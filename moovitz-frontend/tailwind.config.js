@@ -104,11 +104,21 @@ module.exports = {
         "spin-around": "spin-around calc(var(--speed) * 2) infinite linear",
         slide: "slide var(--speed) ease-in-out infinite alternate",
         meteor: "meteor 5s linear infinite",
+        aurora: "aurora 60s linear infinite",
       },
-      
+      keyframes: {
+        aurora: {
+          from: {
+            backgroundPosition: "50% 50%, 50% 50%",
+          },
+          to: {
+            backgroundPosition: "350% 50%, 350% 50%",
+          },
+        },
+      },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [require("tailwindcss-animate"), addVariablesForColors],
 }
 
 function addVariablesForColors({ addBase, theme }) {

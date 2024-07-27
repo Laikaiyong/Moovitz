@@ -6,7 +6,7 @@ import { Calendar } from "@/components/ui/calendar";
 import AnimatedBeamMultipleOutputDemo from "@/components/example/animated-beam-multiple-outputs";
 import { BentoCard, BentoGrid } from "@/components/magicui/bento-grid";
 import Marquee from "@/components/magicui/marquee";
-import AnimatedListDemo from "@/registry/components/example/animated-list-demo";
+import AnimatedListDemo from "@/components/example/animated-list-demo";
 
 const files = [
   {
