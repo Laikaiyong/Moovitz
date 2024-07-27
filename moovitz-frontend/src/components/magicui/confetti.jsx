@@ -91,5 +91,3 @@ function ConfettiButton({
 }
 
 export { Confetti, ConfettiButton };
-
-export default Confetti;

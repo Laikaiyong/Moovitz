@@ -39,7 +39,7 @@ export default function Sidebar() {
                       />
                       <AvatarFallback>Sui Logo</AvatarFallback>
                     </Avatar>
-                    <ConnectButton />
+                    {/* <ConnectButton /> */}
                   </li>
                   <li>
                     <a href="/profile" className="flex items-center space-x-2 text-white hover:text-gray-200">
