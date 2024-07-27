@@ -3,6 +3,7 @@
 import { Drawer } from "vaul";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RiMenu2Line } from "react-icons/ri";
+import { ConnectButton } from '@mysten/dapp-kit';
 
 export default function Sidebar() {
   return (
@@ -31,6 +32,14 @@ export default function Sidebar() {
               </div>
               <div>
                 <ul className="mt-10 space-y-6 lg:space-y-8 lg:text-[18px]">
+                  <li>
+                    <span>
+                      <AvatarImage
+                        src="https://blog.sui.io/content/images/2023/04/Sui_Droplet_Logo_Blue-3.png"
+                      />
+                    </span>
+                    <ConnectButton />
+                  </li>
                   <li>
                     <a href="/profile" className="flex items-center space-x-2 text-white hover:text-gray-200">
                       <span>Profile</span>
