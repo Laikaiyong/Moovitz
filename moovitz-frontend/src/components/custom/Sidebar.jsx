@@ -1,4 +1,4 @@
-"use client";
+'use client';
 
 import { Drawer } from "vaul";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
@@ -32,12 +32,13 @@ export default function Sidebar() {
               </div>
               <div>
                 <ul className="mt-10 space-y-6 lg:space-y-8 lg:text-[18px]">
-                  <li>
-                    <span>
+                  <li className="flex content-center">
+                    <Avatar className="my-auto mx-2 w-[25px] h-[25px]">
                       <AvatarImage
                         src="https://blog.sui.io/content/images/2023/04/Sui_Droplet_Logo_Blue-3.png"
                       />
-                    </span>
+                      <AvatarFallback>Sui Logo</AvatarFallback>
+                    </Avatar>
                     <ConnectButton />
                   </li>
                   <li>

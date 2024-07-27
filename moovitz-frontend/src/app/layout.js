@@ -1,8 +1,8 @@
 import { Poppins } from "next/font/google";
 import { Oxygen } from "next/font/google";
-import Sidebar from "@/components/custom/Sidebar";
 import "./globals.css";
 import Providers from "./providers";
+import Sidebar from "@/components/custom/Sidebar";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 const oxygen = Oxygen({ subsets: ["latin"], weight: ["400", "700"] });
