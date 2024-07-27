@@ -1,8 +1,10 @@
 import { Poppins } from "next/font/google";
+import { Oxygen } from "next/font/google";
 import Sidebar from "@/components/custom/Sidebar";
 import "./globals.css";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
+const oxygen = Oxygen({ subsets: ["latin"], weight: ["400", "700"] });
 
 export const metadata = {
   title: "Moovitz",
@@ -13,7 +15,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={poppins.className}>
-        <Sidebar />
+        {/*<Sidebar />*/}
         {children}
       </body>
     </html>
