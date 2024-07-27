@@ -1,15 +1,14 @@
 import Navbar from "@/components/custom/Navbar";
 import Footer from "@/components/custom/Footer";
 import { ArchitectureBeam } from "@/components/custom/home/architecture";
-import ShinyButtonDemo from "@/components/example/shiny-button-demo";
 
 export default function LandingPage() {
   return (
     <>
       <div className="">
+        <Navbar />
         {/* Hero Section */}
         <section id="hero">
-          <ShinyButtonDemo />
         </section>
         {/* About Moovit */}
         <section>
