@@ -24,7 +24,7 @@ module transactnft::nft {
         owner: address,
     }
 
-    public struct GooseUpdated has copy, drop {
+    public struct NftUpdated has copy, drop {
         // The Object ID of the NFT
         id: ID,
         // The owner of the NFT
@@ -33,11 +33,11 @@ module transactnft::nft {
         status: u8,
     }
 
-    public struct GOOSE has drop {}
+    public struct NFT has drop {}
 
     // ===== Init =====
 
-    fun init(otw: GOOSE, ctx: &mut TxContext) {
+    fun init(otw: NFT, ctx: &mut TxContext) {
         let keys = vector[
             utf8(b"name"),
             utf8(b"description"),
@@ -56,7 +56,7 @@ module transactnft::nft {
 
         let publisher = package::claim(otw, ctx);
 
-        let mut display = display::new_with_fields<Goose>(
+        let mut display = display::new_with_fields<Nft>(
             &publisher, keys, values, ctx
         );
 
@@ -68,7 +68,7 @@ module transactnft::nft {
 
     // ===== Public view functions =====
 
-    public fun status(self: &Goose): u8 {
+    public fun status(self: &Nft): u8 {
         self.status
     }
 
@@ -80,8 +80,8 @@ module transactnft::nft {
         thumbnail_url: vector<u8>,
         status: u8,
         ctx: &mut TxContext
-    ): Goose {
-        let nft = Goose {
+    ): Nft {
+        let nft = Nft {
             id: object::new(ctx),
             name: utf8(name),
             image_url: utf8(image_url),
@@ -89,7 +89,7 @@ module transactnft::nft {
             status,
         };
 
-        event::emit(GooseMinted {
+        event::emit(NftMinted {
             id: object::id(&nft),
             owner: ctx.sender(),
         });
@@ -98,7 +98,7 @@ module transactnft::nft {
     }
 
     public(package) fun update(
-        self: &mut Goose,
+        self: &mut Nft,
         name: vector<u8>,
         image_url: vector<u8>,
         thumbnail_url: vector<u8>,
@@ -110,15 +110,15 @@ module transactnft::nft {
         self.thumbnail_url = utf8(thumbnail_url);
         self.status = status;
 
-        event::emit(GooseUpdated {
+        event::emit(NftUpdated {
             id: object::id(self),
             owner: tx_context::sender(ctx),
             status,
         });
     }
 
-    public(package) fun destroy(nft: Goose) {
-        let Goose { 
+    public(package) fun destroy(nft: Nft) {
+        let Nft { 
             id, name: _,
             image_url: _, 
             thumbnail_url: _, 
@@ -128,7 +128,7 @@ module transactnft::nft {
         object::delete(id)
     }
 
-    public(package) fun uid_mut(self: &mut Goose): &mut UID {
+    public(package) fun uid_mut(self: &mut Nft): &mut UID {
         &mut self.id
     }
     
@@ -136,12 +136,12 @@ module transactnft::nft {
 
     #[test_only]
     public fun init_for_testing(ctx: &mut TxContext) {
-        init(GOOSE {}, ctx);
+        init(NFT {}, ctx);
     }    
     
     #[test_only]
-    public fun name(goose: &Goose): String {
-        goose.name
+    public fun name(nft: &Nft): String {
+        nft.name
     }
 
 }
