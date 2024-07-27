@@ -1,10 +1,29 @@
 "use client";
 
 import { useState } from "react";
+import { useEnokiFlow, useZkLogin } from "@mysten/enoki/react";
 import ShimmerButton from "@/components/magicui/shimmer-button";
+import { toast } from "sonner";
+import Image from "next/image";
 
 export default function Navbar() {
+    const enokiFlow = useEnokiFlow(); 
     const [menuOpen, setMenuOpen] = useState(false);
+
+    const startLogin = async () => {
+        const promise = async () => {
+          window.location.href = await enokiFlow.createAuthorizationURL({
+            provider: "google",
+            clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
+            redirectUrl: `${window.location.origin}/auth`,
+            network: "testnet",
+          });
+        };
+    
+        toast.promise(promise, {
+          loading: "Logging in...",
+        });
+      };
 
     const toggleMenu = () => {
         setMenuOpen(!menuOpen);
@@ -41,11 +60,38 @@ export default function Navbar() {
                     </li>
                 </ul>
                 <div className="mt-4 lg:mt-0 lg:ml-4 lg:hidden">
-                    <ShimmerButton>Sign In</ShimmerButton>
+                    <ShimmerButton onClick={() => startLogin()}>
+                        <div className="flex">
+
+                        <Image
+ src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png"
+ width={20}
+ height={20}
+ className="my-auto mr-7"
+ />        <p>
+
+                        Sign In
+                        </p>
+                        </div>
+                    </ShimmerButton>
                 </div>
             </div>
             <div className="mt-4 lg:mt-0 lg:ml-4 hidden lg:block">
-                <ShimmerButton>Sign In</ShimmerButton>
+                <ShimmerButton onClick={() => startLogin()}>
+                <div className="flex">
+
+<Image
+ src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png"
+ width={20}
+ height={20}
+ className="mr-7 my-auto"
+ />
+<p>
+
+Sign In
+</p>
+</div>
+                </ShimmerButton>
             </div>
         </nav>
     );
