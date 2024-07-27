@@ -1,11 +1,8 @@
-"use client";
-
 import Navbar from "@/components/custom/Navbar";
 import Footer from "@/components/custom/Footer";
 import { ArchitectureBeam } from "@/components/custom/Architecture";
 
 export default function LandingPage() {
-
   return (
     <>
       <div className="">
@@ -36,9 +33,10 @@ export default function LandingPage() {
           </div>
           <ArchitectureBeam />
         </section>
+
         {/* Call to Action */}
         <section>
-
+        
         </section>
         <Footer />
       </div>

@@ -1,6 +1,7 @@
 import AnimatedTransactions from "@/components/custom/AnimatedTransactions";
 import Sidebar from "@/components/custom/Sidebar";
 import BadgesList from "@/components/custom/BadgesList";
+import NFTList from "@/components/custom/NFTList";
 import { Badge } from "@/components/ui/badge"
 
 export default function ProfilePage() {
@@ -55,6 +56,7 @@ export default function ProfilePage() {
                             <h1 className="font-semibold text-2xl pl-4 pt-4">
                                 Featured NFTs
                             </h1>
+                            <NFTList />                        
                         </div>
                     </div>
                     <div className="bg-white border-2 shadow-xl rounded-xl p-4 z-[1]">
