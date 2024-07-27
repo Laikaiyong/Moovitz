@@ -89,3 +89,5 @@ export function ConfettiButton({
     </Button>)
   );
 }
+
+export default Confetti;
