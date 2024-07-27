@@ -25,6 +25,7 @@ export default function LandingPage() {
         <section>
 
         </section>
+        <Footer />
       </div>
     </>
   )
