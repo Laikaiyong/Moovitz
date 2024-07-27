@@ -106,9 +106,9 @@ export default function Sidebar() {
                   </li>
                   <li>
                     <a
-                      href="/transaction"
+                      href="/balance"
                       className="flex items-center space-x-2 text-black hover:text-blue-500 font-semibold">
-                      <span>Transactions</span>
+                      <span>Balance</span>
                     </a>
                   </li>
                   <li>

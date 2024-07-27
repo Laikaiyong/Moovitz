@@ -10,7 +10,7 @@ export default function LandingPage() {
       <div className="">
         <Navbar />
         {/* Hero Section */}
-        <section id="hero" className="px-4 lg:px-10">
+        <section id="hero">
           <AuroraBackgroundDemo></AuroraBackgroundDemo>
         </section>
 
