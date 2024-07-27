@@ -3,6 +3,7 @@ import { Oxygen } from "next/font/google";
 import "./globals.css";
 import Providers from "./providers";
 import Sidebar from "@/components/custom/Sidebar";
+import { Toaster } from "@/components/sonner/toast";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
@@ -27,6 +28,7 @@ export default function RootLayout({ children }) {
         <Providers>
           {/*<Sidebar />*/}
           {children}
+          <Toaster closeButton  />
         </Providers>
       </body>
     </html>
