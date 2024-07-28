@@ -5,7 +5,7 @@ import { Drawer } from "vaul";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RiMenu2Line } from "react-icons/ri";
 import { ConnectButton } from "@mysten/dapp-kit";
-import { Popover, PopoverContent, PopoverTrigger } from "@/components/custom/popover";
+
 import { Transaction } from "@mysten/sui/transactions";
 import { useSuiClient } from "@mysten/dapp-kit";
 import { useEnokiFlow, useZkLogin } from "@mysten/enoki/react";
