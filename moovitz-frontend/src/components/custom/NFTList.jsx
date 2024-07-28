@@ -10,54 +10,64 @@ import { DirectionAwareHover } from "../ui/direction-aware-hover";
 export default function NFTList() {
   const nfts = [
     {
-      "name": "BCC Jailers #19",
-      "price": "402 SUI",
-      "imageUrl": "https://cdn.discordapp.com/avatars/753936966038323260/19bfcd430bb6d8e1ccf17678241e4dda.webp?size=256"
+      "name": "Red girl",
+      "price": "2 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/Picsart_23_12_03_21_44_22_497_4fe7832296.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/671618",
     },
     {
-      "name": "GDSC Cult Leader #2",
+      "name": "Meiryu",
+      "price": "1.2 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/Qm_Uz8_MS_7u9_WAVGJR_Jm_V3rof_Ps_PECEPTRA_3af_Vi22b_DZR_Sk_2de6c06ae7.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/691354",
+    },
+    {
+      "name": "Black Dog Deluxe",
+      "price": "2.6 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/taylor_swift_deluxe_black_dog_364b140a8a.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/831604",
+    },
+    {
+      "name": "suipunk",
+      "price": "0.98 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/punk7873_bb04940929.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/655421",
+    },
+    {
+      "name": "Laser eyes pepe",
       "price": "1 SUI",
-      "imageUrl": "https://media.licdn.com/dms/image/C5603AQHwrpTPQ7GsDw/profile-displayphoto-shrink_800_800/0/1646571986132?e=1727308800&v=beta&t=V83N5bQvdO9nj764MWdWPOfzer683iKKFb-JE0BePTI"
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/telechargement_4e27dbad69.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/656567",
     },
     {
-      "name": "Alpha Access",
-      "price": "30 SUI",
-      "imageUrl": "https://i.seadn.io/s/raw/files/27027f09d311049497a0ddf461c99e71.gif?auto=format&dpr=1&w=1000"
+      "name": "wafuku girl",
+      "price": "5 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/00170_1407227288_997e8c1dad.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/834165"
     },
     {
-      "name": "#2556",
-      "price": "1002 SUI",
-      "imageUrl": "https://i.seadn.io/s/raw/files/88daf5e3d140d39301dbb53c6764298f.png?auto=format&dpr=1&w=1000"
+      "name": "SUI APE",
+      "price": "4 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/Firefly_NFT_style_monkey_with_accessories_6598_defef8465b.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/655369",
     },
     {
-      "name": "Stickman #10",
-      "price": "1 SUI",
-      "imageUrl": "https://i.seadn.io/s/raw/files/d7ab1d82ddc455ea7fc6a7c9e179f3fd.png?auto=format&dpr=1&w=1000"
+      "name": "suis",
+      "price": "4 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/download_a2803c4199.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/666822",
     },
     {
-      "name": "Pandazzz #09",
-      "price": "1 SUI",
-      "imageUrl": "https://i.seadn.io/s/raw/files/3e1daa4f8689f83186f69c6fb37559fc.png?auto=format&dpr=1&w=1000"
+      "name": "FOXSUI",
+      "price": "10 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/0ff83352_e2d5_4536_ac90_b8340d767df5_7eb7c1ab7c.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/822432",
     },
     {
-      "name": "APUBCC Duckies #4",
-      "price": "1 SUI",
-      "imageUrl": "https://i.seadn.io/s/raw/files/792e42acf95f77b05bed8abac5bb5148.png?auto=format&dpr=1&w=1000"
-    },
-    {
-      "name": "Encode Certification",
-      "price": "0",
-      "imageUrl": "https://i.seadn.io/s/raw/files/84e76fa4a95c9b83f17e150037215999.jpg?auto=format&dpr=1&w=1000"
-    },
-    {
-      "name": "Campus Connect: Web3 Fundamentals",
-      "price": "0.4 SUI",
-      "imageUrl": "https://i.seadn.io/gae/bO3M-4PSiHyOB7CV5uVYyzJ4p3qXO8iyZfSZLqulnrZBe26LNQ8h1P0i9lvIKC5w9brNo-NLDDygREf7D3Zv97o7MnsKjXW76op-?auto=format&dpr=1&w=1000"
-    },
-    {
-      "name": "BCC Jailers #26",
-      "price": "43 SUI",
-      "imageUrl": "https://media.licdn.com/dms/image/D5603AQErINuui8DiQA/profile-displayphoto-shrink_800_800/0/1703865131897?e=1727308800&v=beta&t=BJH4CsTTuqhorsl9WT27XNzIpCmbp7n_8jOFGzFaENY"
+      "name": "BMW 2023",
+      "price": "10 SUI",
+      "imageUrl": "https://sui-api-mainnet.bluemove.net/uploads/wp9392200_294189d257.WEBP",
+      "url": "https://sui.bluemove.net/collection/market-item/826789",
     },
   ];
   return (

@@ -66,7 +66,6 @@ export default function Sidebar() {
 									<AvatarImage src='https://github.com/shadcn.png' />
 									<AvatarFallback>CN</AvatarFallback>
 								</Avatar>
-								<p className='text-sm lg:text-lg text-black'>0x_drtanhaoxiang</p>
 							</div>
 							<div>
 								<ul className='mt-10 space-y-6 lg:space-y-8 lg:text-[18px]'>

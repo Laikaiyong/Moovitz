@@ -20,7 +20,7 @@ export default function ProfilePage() {
                         <div className="h-screen z-[1] px-4 space-y-5">
                             <div className="flex justify-center py-4">
                                 <img 
-                                src="https://i.seadn.io/s/raw/files/792e42acf95f77b05bed8abac5bb5148.png?auto=format&dpr=1&w=1000"
+                                src="https://github.com/shadcn.png"
                                 alt="Image of a Duck NFT"
                                 width={300}
                                 height={300}
@@ -28,12 +28,7 @@ export default function ProfilePage() {
                                 />
                             </div>
                             <div>
-                                <p className="font-semibold">
-                                Address: <span className="font-normal">Insert Address Here</span>
-                                </p>
-                            </div>
-                            <div>
-                                <h3 className="font-semibold">Bio: </h3>
+                                <h3 className="font-semibold text-lg">Bio: </h3>
                                 <p className="italic text-base">Food and Swags is most important for events</p>
                             </div>
                             <div className="flex items-center text-lg">
