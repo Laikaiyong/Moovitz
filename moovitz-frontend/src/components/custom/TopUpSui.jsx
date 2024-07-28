@@ -16,7 +16,7 @@ export default function TopUpSui() {
 		const coin = txb.splitCoins(txb.gas, [10]);
 		txb.transferObjects(
 			[coin],
-			"0xf9af136d59dfe6f5e9db53464079c06c493e263c60fb2179fde1fca849e96514"
+			"0x6defa84c04ded593f49a87093aa96ebfdfd3e42d372b6d52fd6f11962f211a4c"
 		);
 
 		// Sign and execute the transaction, using the Enoki keypair

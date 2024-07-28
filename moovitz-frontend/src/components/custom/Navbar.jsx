@@ -47,16 +47,13 @@ export default function Navbar() {
             <div className={`w-full lg:flex lg:items-center lg:w-auto ${menuOpen ? "block" : "hidden"} mt-6 lg:mt-0`}>
                 <ul className="flex flex-col lg:flex-row lg:space-x-14 space-y-4 lg:space-y-0 text-[18px] lg:items-center">
                     <li className="hover:text-blue-500 hover:font-semibold">
-                        <a href="#" onClick={closeMenu}>About</a>
+                        <a href="#aboutUs" onClick={closeMenu}>About</a>
                     </li>
                     <li className="hover:text-blue-500 hover:font-semibold">
-                        <a href="#" onClick={closeMenu}>Features</a>
+                        <a href="#features" onClick={closeMenu}>Features</a>
                     </li>
                     <li className="hover:text-blue-500 hover:font-semibold">
-                        <a href="#" onClick={closeMenu}>How it works</a>
-                    </li>
-                    <li className="hover:text-blue-500 hover:font-semibold">
-                        <a href="#" onClick={closeMenu}>Contact Us</a>
+                        <a href="#howItWorks" onClick={closeMenu}>How it works</a>
                     </li>
                 </ul>
                 <div className="mt-4 lg:mt-0 lg:ml-4 lg:hidden">
