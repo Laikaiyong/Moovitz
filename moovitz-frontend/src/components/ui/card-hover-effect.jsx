@@ -13,11 +13,18 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import ProjectBalance from "../custom/ProjectBalance";
 import Image from "next/image";
+import { Transaction } from "@mysten/sui/transactions";
+import { useEnokiFlow } from "@mysten/enoki/react";
+import {
+	useSuiClient
+} from '@mysten/dapp-kit';
 
 export const HoverEffect = ({ items, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
   const [walletAddress, setWalletAddress] = useState("");
+  const [suiTotal, setSuiTotal] = useState("");
   const projectWalletAddress = "0xD001570E75b31f6764cCa245874a2fb13DA24eab";
+  const projectSuiAddress = ""
   const images = [
     "/kt1.png",
     "/kt2.png",
@@ -28,10 +35,62 @@ export const HoverEffect = ({ items, className }) => {
 
   useEffect(() => {
     const storedAddress = localStorage.getItem("walletAddress");
+    const storedSuitoProject = localStorage.getItem("suitotalProject");
     if (storedAddress) {
       setWalletAddress(storedAddress);
     }
+
+    if (storedSuitoProject){
+      setSuiTotal(storedSuitoProject)
+    }
   }, []);
+
+  const client = useSuiClient();
+	const enokiFlow = useEnokiFlow();
+	async function fundSuiProject() {
+    
+    try {
+      // Get the keypair for the current user.
+      const keypair = await enokiFlow.getKeypair({ network: "testnet" });
+  
+      const txb = new Transaction();
+      // Add some transactions to the block...
+      const coin = txb.splitCoins(txb.gas, [10]);
+      txb.transferObjects(
+        [coin],
+        "0x6defa84c04ded593f49a87093aa96ebfdfd3e42d372b6d52fd6f11962f211a4c"
+      );
+  
+      // Sign and execute the transaction, using the Enoki keypair
+      const response = await client.signAndExecuteTransaction({
+        signer: keypair,
+        transaction: txb,
+      });
+
+      // const data = await response.json();
+      // console.log(data);
+      toast.success("Project funding initiated successfully!", {
+        action: {
+          label: "View",
+          onClick: () => {
+          window.open(
+            "https://suiscan.xyz/testnet/tx/" +
+            response.digest,
+            "_blank"
+          );
+          },
+        },
+        });
+
+        localStorage.setItem(
+          "suitotalProject",
+          Number(localStorage.getItem("suitotalProject")) + 0.002
+        )
+    } catch (error) {
+      console.error("Error funding project:", error);
+      toast.error("Failed to fund project. Please try again.");
+    }
+	}
 
   const fundProject = async (amount) => {
     if (!walletAddress) {
@@ -57,7 +116,18 @@ export const HoverEffect = ({ items, className }) => {
 
       const data = await response.json();
       console.log("Funding initiated:", data);
-      toast.success("Project funding initiated successfully!");
+      toast.success("Project funding initiated successfully!", {
+        action: {
+          label: "View",
+          onClick: () => {
+          window.open(
+            "https://explorer-testnet.maschain.com/" +
+            data.result.transactionHash,
+            "_blank"
+          );
+          },
+        },
+        });
     } catch (error) {
       console.error("Error funding project:", error);
       toast.error("Failed to fund project. Please try again.");
@@ -85,7 +155,7 @@ export const HoverEffect = ({ items, className }) => {
               <CardDescription>{item.description}</CardDescription>
             </div>
             <p>
-              <ProjectBalance projectWalletAddress={projectWalletAddress} />
+              <ProjectBalance suiBalance={suiTotal}  projectWalletAddress={projectWalletAddress} />
             </p>
             <Modal>
               <ModalTrigger className="bg-white text-black flex justify-center group/modal-btn mt-4">
@@ -174,6 +244,11 @@ export const HoverEffect = ({ items, className }) => {
                     className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28"
                     onClick={() => fundProject("2")}>
                     Fund 2 MOOV
+                  </button>
+                  <button
+                    className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28"
+                    onClick={() => fundSuiProject(0.002)}>
+                    Fund 0.002 SUI
                   </button>
                 </ModalFooter>
               </ModalBody>

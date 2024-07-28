@@ -1,7 +1,7 @@
 "use client";
 import { useState, useEffect } from "react";
 
-const ProjectBalance = ({ projectWalletAddress }) => {
+const ProjectBalance = ({ projectWalletAddress, suiBalance }) => {
 	const [balance, setBalance] = useState("0");
 
 	const fetchBalance = async () => {
@@ -30,7 +30,11 @@ const ProjectBalance = ({ projectWalletAddress }) => {
 		fetchBalance();
 	}, []);
 
-	return <div className='text-sm text-white'>Project Balance: {balance} tokens</div>;
+	return <div>
+		<div className='text-sm text-white'>Project Balance:</div>
+		<div className='text-sm text-white'>{balance} MOOV</div>
+		<div className='text-sm text-white'>{suiBalance} SUI</div>
+		</div>;
 };
 
 export default ProjectBalance;

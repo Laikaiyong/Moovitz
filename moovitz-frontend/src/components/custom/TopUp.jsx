@@ -48,7 +48,18 @@ export default function TopUp() {
 
 			const data = await response.json();
 			console.log("Top up successful:", data);
-			toast.success(`Successfully topped up ${amount} tokens!`);
+			toast.success(`Successfully topped up ${amount} tokens!`,{
+						action: {
+						  label: "View",
+						  onClick: () => {
+							window.open(
+							  "https://explorer-testnet.maschain.com/" +
+								data.result.transactionHash,
+							  "_blank"
+							);
+						  },
+						},
+					  });
 			setAmount("");
 		} catch (error) {
 			console.error("Error topping up wallet:", error);

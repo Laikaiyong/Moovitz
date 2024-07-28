@@ -1,36 +1,62 @@
 "use client";
+import { useState } from "react";
 import { Transaction } from "@mysten/sui/transactions";
-import { useSuiClient } from "@mysten/dapp-kit";
 import { useEnokiFlow } from "@mysten/enoki/react";
+import { useSuiClient } from "@mysten/dapp-kit";
+import { getFaucetHost, requestSuiFromFaucetV0 } from "@mysten/sui/faucet";
+import { useZkLogin } from "@mysten/enoki/react";
+import { toast } from "sonner";
 
 export default function TopUpSui() {
-	const client = useSuiClient();
-	const enokiFlow = useEnokiFlow();
+  const client = useSuiClient();
+  const { address: suiAddress } = useZkLogin(); // The zkLogin instance
 
-	async function handleButtonClick() {
-		// Get the keypair for the current user.
-		const keypair = await enokiFlow.getKeypair({ network: "testnet" });
-
-		const txb = new Transaction();
-		// Add some transactions to the block...
-		const coin = txb.splitCoins(txb.gas, [10]);
-		txb.transferObjects(
-			[coin],
-			"0x6defa84c04ded593f49a87093aa96ebfdfd3e42d372b6d52fd6f11962f211a4c"
-		);
-
-		// Sign and execute the transaction, using the Enoki keypair
-		await client.signAndExecuteTransaction({
-			signer: keypair,
-			transaction: txb,
+  const enokiFlow = useEnokiFlow();
+  async function handleButtonClick() {
+    try {
+		const response = await fetch('/api/sui/faucet', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+			},
+			body: JSON.stringify({
+				recipient: suiAddress,
+			}),
 		});
-	}
-	return (
-		<button
-			onClick={() => handleButtonClick()}
-			className='bg-blue-500 text-white px-4 py-2 rounded-md'
-		>
-			Send me Sui!
-		</button>
-	);
+	
+		const data = await response.json();
+		console.log(data);
+
+		// if (!(res.status == "Error"))
+		// {
+
+
+		// 	console.log(res);
+		// 	const data = await res.json();
+		// 	console.log(data);
+	
+		// 	toast.success("Successfully Top Up 2 SUI", {
+		// 		action: {
+		// 		  label: "View",
+		// 		  onClick: () => {
+		// 			window.open(
+		// 			  "https://suiscan.xyz/testnet/tx/" +
+		// 				data.task,
+		// 			  "_blank"
+		// 			);
+		// 		  },
+		// 		},
+		// 	  });
+		// } else {
+		// 	toast.error("Error occured");
+		// }
+    } catch (error) {}
+  }
+  return (
+    <button
+      onClick={() => handleButtonClick()}
+      className="bg-blue-500 text-white px-4 py-2 rounded-md">
+      Send me Sui!
+    </button>
+  );
 }
