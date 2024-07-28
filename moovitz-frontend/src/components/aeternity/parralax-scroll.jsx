@@ -42,8 +42,11 @@ export const ParallaxScroll = ({
               key={"grid-1" + idx}
             >
       <DirectionAwareHover imageUrl={el.imageUrl}>
+      <a href={el.url} target="_blank">
         <p className="font-bold text-xl">{el.name}</p>
         <p className="font-normal text-sm">{el.price}</p>
+        
+        </a>
       </DirectionAwareHover>
             </motion.div>
           ))}
@@ -52,8 +55,10 @@ export const ParallaxScroll = ({
           {secondPart.map((el, idx) => (
             <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
       <DirectionAwareHover imageUrl={el.imageUrl}>
+        <a href={el.url} target="_blank">
         <p className="font-bold text-xl">{el.name}</p>
         <p className="font-normal text-sm">{el.price}</p>
+        </a>
       </DirectionAwareHover>
             </motion.div>
           ))}
@@ -62,8 +67,10 @@ export const ParallaxScroll = ({
           {thirdPart.map((el, idx) => (
             <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
        <DirectionAwareHover imageUrl={el.imageUrl}>
+       <a href={el.url} target="_blank">
         <p className="font-bold text-xl">{el.name}</p>
         <p className="font-normal text-sm">{el.price}</p>
+        </a>
       </DirectionAwareHover>
             </motion.div>
           ))}

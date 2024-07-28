@@ -22,7 +22,7 @@ export default function LandingPage() {
           </p>
         </section>
         {/* Features */}
-        <section className="m-12">
+        <section id="features" className="m-12">
           <BentoDemo></BentoDemo>
         </section>
         {/* How it Works */}
