@@ -1,11 +1,15 @@
 import { HoverEffect } from "@/components/ui/card-hover-effect";
+import Sidebar from "@/components/custom/Sidebar";
 
 export default function ProjectPage() {
 	return (
-		<div className='flex flex-col items-center justify-center h-full'>
-			<h1 className='text-3xl font-bold'>Projects</h1>
-			<HoverEffect items={projects} />
-		</div>
+		<>
+			<Sidebar />
+			<div className='flex flex-col items-center justify-center h-full'>
+				<h1 className='text-3xl font-bold'>Projects</h1>
+				<HoverEffect items={projects} />
+			</div>
+		</>
 	);
 }
 export const projects = [
