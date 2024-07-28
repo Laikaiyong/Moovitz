@@ -72,11 +72,11 @@ const UserBalance = () => {
 	}
 
 	return (
-		<div className='text-md text-white space-y-6'>
-			<section className='flex'>
-				<h1 className='text-lg truncate w-9/12 gap-10'>
-					{walletAddress ? `${walletAddress}` : "No wallet found"}
-				</h1>
+		<div className='text-sm text-white space-y-6'>
+						<div className='flex items-center space-x-2'>
+				<span className='truncate max-w-[200px]'>
+				{walletAddress ? `${walletAddress}` : "No wallet found"}
+				</span>
 				<button
 					onClick={copyToClipboard}
 					className='p-1 bg-gray-700 rounded-md hover:bg-gray-600 transition-colors'
@@ -84,9 +84,8 @@ const UserBalance = () => {
 				>
 					{isCopied ? <CheckIcon className='w-4 h-4' /> : <CopyIcon className='w-4 h-4' />}
 				</button>
-			</section>
-
-			<section>Balance: {balance} tokens available</section>
+			</div>
+			<div className='mt-2'>Balance: {balance} tokens available</div>
 		</div>
 	);
 };
