@@ -1,5 +1,5 @@
 import { CalendarIcon, FileTextIcon } from "@radix-ui/react-icons";
-import { BellIcon, Share2Icon } from "lucide-react";
+import { Vote, Share2Icon } from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Calendar } from "@/components/ui/calendar";
@@ -10,32 +10,20 @@ import AnimatedListDemo from "@/components/example/animated-list-demo";
 
 const files = [
   {
-    name: "bitcoin.pdf",
-    body: "Bitcoin is a cryptocurrency invented in 2008 by an unknown person or group of people using the name Satoshi Nakamoto.",
+    name: "Mas Wallet",
+    body: "MasChain runs a robust multi-sig wallet system. This system requires multiple approvals from our council members to execute any transaction, ensuring no single point of failure.",
   },
   {
-    name: "finances.xlsx",
-    body: "A spreadsheet or worksheet is a file made of rows and columns that help sort data, arrange data easily, and calculate numerical data.",
-  },
-  {
-    name: "logo.svg",
-    body: "Scalable Vector Graphics is an Extensible Markup Language-based vector image format for two-dimensional graphics with support for interactivity and animation.",
-  },
-  {
-    name: "keys.gpg",
-    body: "GPG keys are used to encrypt and decrypt email, files, directories, and whole disk partitions and to authenticate messages.",
-  },
-  {
-    name: "seed.txt",
-    body: "A seed phrase, seed recovery phrase or backup seed phrase is a list of words which store all the information needed to recover Bitcoin funds on-chain.",
+    name: "Sui Wallet",
+    body: "Provides a comprehensive solution for viewing and managing your coins and NFTs, acquiring new digital assets, and transferring those you own with ease",
   },
 ];
 
 const features = [
   {
     Icon: FileTextIcon,
-    name: "Save your files",
-    description: "We automatically save your files as you type.",
+    name: "Flexible Wallets",
+    description: "Users can sign in via Mas or Sui Wallet.",
     href: "#",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-1",
@@ -66,9 +54,9 @@ const features = [
     ),
   },
   {
-    Icon: BellIcon,
-    name: "Notifications",
-    description: "Get notified when something happens.",
+    Icon: Vote,
+    name: "Crowdfunding Feature",
+    description: "Vote for the infrastructure by making contributions.",
     href: "#",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
@@ -79,8 +67,8 @@ const features = [
   },
   {
     Icon: Share2Icon,
-    name: "Integrations",
-    description: "Supports 100+ integrations and counting.",
+    name: "User-Friendly Interactions",
+    description: "Top-up balance, Card Reloads, and renew MY50 with crypto using Mootvitz.",
     href: "#",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-2",
@@ -91,8 +79,8 @@ const features = [
   },
   {
     Icon: CalendarIcon,
-    name: "Calendar",
-    description: "Use the calendar to filter your files by date.",
+    name: "View Schedules",
+    description: "Check the exact departure time of drivers.",
     className: "col-span-3 lg:col-span-1",
     href: "#",
     cta: "Learn more",
