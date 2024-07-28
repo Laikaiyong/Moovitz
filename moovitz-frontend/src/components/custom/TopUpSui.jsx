@@ -24,32 +24,7 @@ export default function TopUpSui() {
 			}),
 		});
 	
-		const data = await response.json();
-		console.log(data);
-
-		// if (!(res.status == "Error"))
-		// {
-
-
-		// 	console.log(res);
-		// 	const data = await res.json();
-		// 	console.log(data);
-	
-		// 	toast.success("Successfully Top Up 2 SUI", {
-		// 		action: {
-		// 		  label: "View",
-		// 		  onClick: () => {
-		// 			window.open(
-		// 			  "https://suiscan.xyz/testnet/tx/" +
-		// 				data.task,
-		// 			  "_blank"
-		// 			);
-		// 		  },
-		// 		},
-		// 	  });
-		// } else {
-		// 	toast.error("Error occured");
-		// }
+		toast.success("Successfully Top Up SUI");
     } catch (error) {}
   }
   return (
