@@ -1,4 +1,6 @@
-export async function POST() {
+export async function POST(req) {
+	const { amount, walletAddress } = await req.json();
+
 	const res = await fetch(`${process.env.MASCHAIN_API_URL}/api/token/mint`, {
 		method: "POST",
 		headers: {
@@ -7,11 +9,11 @@ export async function POST() {
 			"content-type": "application/json",
 		},
 		body: JSON.stringify({
-			wallet_address: "0x62aB6f2aE657186dB838A5FAbe62DcbC51914384",
-			to: "0xD001570E75b31f6764cCa245874a2fb13DA24eab",
-			amount: "2",
+			wallet_address: "0x62aB6f2aE657186dB838A5FAbe62DcbC51914384", // This should be the admin wallet that mints tokens
+			to: walletAddress, // The user's wallet address
+			amount: amount,
 			contract_address: "0xE7749981B2D6250371142C9A2076033B8aF4fbFb",
-			callback_url: "",
+			callback_url: `${process.env.NEXT_PUBLIC_BASE_URL}/api/maschain/callback/top-up`,
 		}),
 	});
 
