@@ -16,11 +16,15 @@ export default function CreateMasWalletDialog() {
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
 	const [walletAddress, setWalletAddress] = useState("");
+	const [isLoading, setIsLoading] = useState(true);
+	const [error, setError] = useState(null);
+	const [balance, setBalance] = useState("0");
 
 	useEffect(() => {
 		const storedAddress = localStorage.getItem("walletAddress");
 		if (storedAddress) {
 			setWalletAddress(storedAddress);
+			fetchBalance(storedAddress);
 		}
 	}, []);
 
@@ -55,12 +59,52 @@ export default function CreateMasWalletDialog() {
 			toast.error("Error creating wallet: " + error.message);
 		}
 	};
+
+	const fetchBalance = async (address) => {
+		setIsLoading(true);
+		setError(null);
+		try {
+			const response = await fetch("/api/maschain/token/balance", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json",
+				},
+				body: JSON.stringify({ wallet_address: address }),
+			});
+
+			if (!response.ok) {
+				throw new Error("Failed to fetch balance");
+			}
+
+			const data = await response.json();
+			if (data.result) {
+				setBalance(data.result);
+			} else {
+				throw new Error("Invalid response format");
+			}
+		} catch (error) {
+			console.error("Error fetching balance:", error);
+			setError("Failed to fetch balance. Please try again later.");
+			toast.error("Error fetching balance");
+		} finally {
+			setIsLoading(false);
+		}
+	};
 	if (walletAddress) {
 		return (
-			<div className='bg-blue-100 mx-4 rounded-3xl text-blue-800 px-3 py-2'>
-				Wallet: {walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
+			<div className=' mx-4 rounded-3xl text-black '>
+				<p>
+					{walletAddress.slice(0, 6)}...{walletAddress.slice(-4)} - {balance} MOOV{" "}
+				</p>
 			</div>
 		);
+	}
+	if (isLoading) {
+		return <div className='text-md text-white'>Loading balance...</div>;
+	}
+
+	if (error) {
+		return <div className='text-sm text-red-500'>{error}</div>;
 	}
 
 	return (

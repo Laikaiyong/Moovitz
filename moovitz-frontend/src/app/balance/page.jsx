@@ -8,6 +8,9 @@ import {
 	GlowingStarsTitle,
 } from "@/components/ui/glowing-stars";
 
+import SuiUserBalance from "@/components/custom/SuiUserBalance";
+import TopUpSui from "@/components/custom/TopUpSui";
+
 export default function BalancePage() {
 	return (
 		<div className='flex'>
@@ -33,10 +36,13 @@ export default function BalancePage() {
 					</section>
 					<section>
 						<GlowingStarsBackgroundCard className={"bg-[linear-gradient(110deg,#333_0.6%,#222)]"}>
-							<GlowingStarsTitle> I want SUI wallet address and balance here</GlowingStarsTitle>
+							<GlowingStarsTitle>
+								{" "}
+								<SuiUserBalance />
+							</GlowingStarsTitle>
 							<div className='flex justify-between items-end'>
 								<GlowingStarsDescription className={"mt-5"}>
-									<TopUp />
+									<TopUpSui />
 								</GlowingStarsDescription>
 							</div>
 						</GlowingStarsBackgroundCard>
