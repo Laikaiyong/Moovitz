@@ -106,9 +106,6 @@ export default function CreateMasWalletDialog() {
 			</div>
 		);
 	}
-	if (isLoading) {
-		return <div className='text-md text-white'>Loading balance...</div>;
-	}
 
 	if (error) {
 		return <div className='text-sm text-red-500'>{error}</div>;
