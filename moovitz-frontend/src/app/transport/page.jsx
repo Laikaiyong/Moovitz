@@ -2,6 +2,7 @@
 
 import Sidebar from "@/components/custom/Sidebar";
 import { AppleCardsCarouselDemo } from "@/components/aeternity/example/apple-cards-carousel";
+import Iframe from 'react-iframe'
 
 export default function TransportPage() {
   return (
@@ -51,6 +52,16 @@ export default function TransportPage() {
               {/* Add more rows as needed */}
             </tbody>
           </table>
+        </div>
+        <div className="pt-10 pl-4">
+        <h3 className="text-lg font-semibold mb-4">Public Transport Tracking</h3>
+        <Iframe url="https://my-transport.streamlit.app/Bus?embed=true"
+        width="640px"
+        height="320px"
+        id=""
+        className="w-full h-[60vh]"
+        display="block"
+        position="relative"/>
         </div>
         <AppleCardsCarouselDemo />
 

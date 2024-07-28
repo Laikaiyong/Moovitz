@@ -76,13 +76,15 @@ export default function Sidebar() {
 										</Avatar>
 										{/* <ConnectButton /> */}
 										<div className='flex'>
-											<p className='mx-4'>
+											<p>
 												{accountLoading ? (
 													<LoaderCircle className='animate-spin' />
 												) : (
-													`${suiAddress?.slice(0, 5)}...${suiAddress?.slice(
+                          <div className='bg-blue-100 mx-4 rounded-3xl text-blue-800 px-3 py-2'>
+													${suiAddress?.slice(0, 5)}...${suiAddress?.slice(
 														63
-													)} - ${balance.toPrecision(3)} SUI`
+													)} - ${balance.toPrecision(3)} SUI
+                        </div>
 												)}
 											</p>
 											<a
