@@ -11,6 +11,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
+import { LoaderCircle, ExternalLink } from "lucide-react";
 
 export default function CreateMasWalletDialog() {
 	const [name, setName] = useState("");
@@ -92,10 +93,16 @@ export default function CreateMasWalletDialog() {
 	};
 	if (walletAddress) {
 		return (
-			<div className=' mx-4 rounded-3xl text-black '>
-				<p>
-					{walletAddress.slice(0, 6)}...{walletAddress.slice(-4)} - {balance} MOOV{" "}
-				</p>
+			<div className='flex'>
+				<div className='bg-blue-100 mx-4 rounded-3xl text-blue-800 px-3 py-2'>
+					{walletAddress.slice(0, 6)}...{walletAddress.slice(-4)}
+				</div>
+				{/* <a
+			href={`https://explorer-testnet.maschain.com//${walletAddress}`}
+			target='_blank'
+		>
+			<ExternalLink width={16} />
+		</a> */}
 			</div>
 		);
 	}

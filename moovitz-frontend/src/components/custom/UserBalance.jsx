@@ -33,6 +33,8 @@ const UserBalance = () => {
 				body: JSON.stringify({ wallet_address: address }),
 			});
 
+			console.log(response);
+
 			if (!response.ok) {
 				throw new Error("Failed to fetch balance");
 			}
