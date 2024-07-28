@@ -11,7 +11,7 @@ export default function Page() {
 
   useEffect(() => {
     if (handled) {
-     window.location.href = "/home";
+     window.location.href = "/transport";
     }
 }, [handled]);
 

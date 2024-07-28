@@ -48,10 +48,10 @@ module transactnft::nft {
 
         let values = vector[
             utf8(b"{name}"),
-            utf8(b"a cool goose out of the pond"),
+            utf8(b"a train sleeping at station"),
             utf8(b"ipfs://{image_url}"),
             utf8(b"ipfs://{thumbnail_url}"),
-            utf8(b"https://goosebumps.farm"),
+            utf8(b"https://moovitz.vercel.app"),
         ];
 
         let publisher = package::claim(otw, ctx);

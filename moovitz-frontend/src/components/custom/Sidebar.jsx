@@ -60,9 +60,7 @@ export default function Sidebar() {
 				<Drawer.Content className='bg-white flex flex-col rounded-t-[10px] h-full w-[80vw] md:w-[400px] mt-24 fixed bottom-0 left-0 z-[3]'>
 					<nav className='p-4 bg-white flex-1 h-full'>
 						<div className='max-w-md mx-auto lg:pl-4'>
-							<Drawer.Title className='font-semibold lg:text-[20px] mb-6'>
-								Typescript is superior than Javascript
-							</Drawer.Title>
+							<Drawer.Title className='font-semibold lg:text-[20px] mb-6'>Moovitz</Drawer.Title>
 							<div className='flex flex-col items-center text-center justify-center space-y-4'>
 								<Avatar className='w-[60px] h-[60px] lg:w-[100px] lg:h-[100px]'>
 									<AvatarImage src='https://github.com/shadcn.png' />
@@ -113,10 +111,10 @@ export default function Sidebar() {
 									</li>
 									<li>
 										<a
-											href='/transaction'
+											href='/balance'
 											className='flex items-center space-x-2 text-black hover:text-blue-500 font-semibold'
 										>
-											<span>Transactions</span>
+											<span>Balance</span>
 										</a>
 									</li>
 									<li>
