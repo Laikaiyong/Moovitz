@@ -4,30 +4,30 @@ import { AnimatedList } from "@/components/magicui/animated-list";
 
 let notifications = [
   {
-    name: "Payment received",
-    description: "Magic UI",
+    name: "Contribution Received",
+    description: "50 Sui",
     time: "15m ago",
 
     icon: "💸",
     color: "#00C9A7",
   },
   {
-    name: "User signed up",
-    description: "Magic UI",
+    name: "User Signed Up",
+    description: "0xcfe...a9d",
     time: "10m ago",
     icon: "👤",
     color: "#FFB800",
   },
   {
-    name: "New message",
-    description: "Magic UI",
+    name: "Incoming Inquiry",
+    description: "Safety Protocols",
     time: "5m ago",
     icon: "💬",
     color: "#FF3D71",
   },
   {
-    name: "New event",
-    description: "Magic UI",
+    name: "Event Created",
+    description: "Kiara Valley Station",
     time: "2m ago",
     icon: "🗞️",
     color: "#1E86FF",
@@ -84,7 +84,7 @@ export default function AnimatedListDemo({
   return (
     (<div
       className={cn(
-        "relative flex h-[500px] w-full flex-col p-6 overflow-hidden rounded-lg border bg-background md:shadow-xl",
+        "relative flex h-[500px] w-full flex-col p-6 overflow-hidden rounded-lg border md:shadow-xl",
         className
       )}>
       <AnimatedList>
