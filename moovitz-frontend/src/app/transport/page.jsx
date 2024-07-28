@@ -13,7 +13,6 @@ export default function TransportPage() {
 
     {/* Main Content Container */}
     <div className="w-full lg:w-5/6 px-4 lg:px-10 py-4 lg:py-10 z-0">
-      <h1>Transport</h1>
       <AppleCardsCarouselDemo />
     </div>
     </div>
