@@ -19,8 +19,7 @@ from streamlit_folium import st_folium
 st.set_page_config(
     layout="wide",
     page_title="Train| Moovitz",
-    page_icon="🚄",
-    initial_sidebar_state="collapsed"
+    page_icon="🚄"
 )
  
 st.title("KTM Tracking")
