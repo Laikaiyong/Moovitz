@@ -31,9 +31,9 @@ const ProjectBalance = ({ projectWalletAddress, suiBalance }) => {
 	}, []);
 
 	return <div>
-		<div className='text-sm text-white'>Project Balance:</div>
-		<div className='text-sm text-white'>{balance} MOOV</div>
-		<div className='text-sm text-white'>{suiBalance} SUI</div>
+		<div className='text-sm'>Project Balance:</div>
+		<div className='text-sm'>{balance} MOOV</div>
+		<div className='text-sm'>{suiBalance} SUI</div>
 		</div>;
 };
 
