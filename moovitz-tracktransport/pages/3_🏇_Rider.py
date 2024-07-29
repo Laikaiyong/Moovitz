@@ -7,8 +7,7 @@ from datetime import datetime, timedelta
 st.set_page_config(
     layout="wide",
     page_title="Rider | Moovitz",
-    page_icon="🏇",
-    initial_sidebar_state="collapsed"
+    page_icon="🏇"
 )
 
 @st.cache_data
