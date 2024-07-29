@@ -6,9 +6,9 @@ import { Badge } from "@/components/ui/badge";
 
 export default function ProfilePage() {
   return (
-    <div className="flex flex-col lg:flex-row">
+    <div className="flex">
       {/* Sidebar Container */}
-      <div className="w-full lg:w-1/6">
+      <div className="lg:w-1/6">
         <Sidebar />
       </div>
 

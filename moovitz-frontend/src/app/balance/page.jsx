@@ -20,8 +20,8 @@ export default function BalancePage() {
 			</div>
 
 			{/* Main Content Container */}
-			<div className='w-full lg:w-5/6 px-4 lg:px-10 py-4 lg:py-10 z-0 flex gap-10'>
-				<div className='flex flex-col gap-7'>
+			<div className='w-full lg:w-5/6 py-4 lg:py-10 z-0 flex'>
+				<div className='flex flex-col gap-7 pr-10'>
 					<section>
 						<GlowingStarsBackgroundCard className={"bg-[linear-gradient(110deg,#333_0.6%,#222)]"}>
 							<GlowingStarsTitle>

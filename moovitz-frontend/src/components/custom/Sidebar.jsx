@@ -50,7 +50,7 @@ export default function Sidebar() {
 
 	return (
 		<Drawer.Root direction='left'>
-			<Drawer.Trigger className="m-10 sticky top-0" asChild>
+			<Drawer.Trigger className="m-10 sticky top-10" asChild>
 				<button>
 					<RiMenu2Line className='text-2xl lg:text-[32px]' />
 				</button>

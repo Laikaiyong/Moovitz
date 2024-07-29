@@ -15,23 +15,15 @@ import ProjectBalance from "../custom/ProjectBalance";
 import Image from "next/image";
 import { Transaction } from "@mysten/sui/transactions";
 import { useEnokiFlow } from "@mysten/enoki/react";
-import {
-	useSuiClient
-} from '@mysten/dapp-kit';
+import { useSuiClient } from "@mysten/dapp-kit";
 
 export const HoverEffect = ({ items, className }) => {
   let [hoveredIndex, setHoveredIndex] = useState(null);
   const [walletAddress, setWalletAddress] = useState("");
   const [suiTotal, setSuiTotal] = useState("");
   const projectWalletAddress = "0xD001570E75b31f6764cCa245874a2fb13DA24eab";
-  const projectSuiAddress = ""
-  const images = [
-    "/kt1.png",
-    "/kt2.png",
-    "/kt3.png",
-    "/kt4.png",
-    "/kt5.png",
-  ];
+  const projectSuiAddress = "";
+  const images = ["/kt1.png", "/kt2.png", "/kt3.png", "/kt4.png", "/kt5.png"];
 
   useEffect(() => {
     const storedAddress = localStorage.getItem("walletAddress");
@@ -40,19 +32,18 @@ export const HoverEffect = ({ items, className }) => {
       setWalletAddress(storedAddress);
     }
 
-    if (storedSuitoProject){
-      setSuiTotal(storedSuitoProject)
+    if (storedSuitoProject) {
+      setSuiTotal(storedSuitoProject);
     }
   }, []);
 
   const client = useSuiClient();
-	const enokiFlow = useEnokiFlow();
-	async function fundSuiProject() {
-    
+  const enokiFlow = useEnokiFlow();
+  async function fundSuiProject() {
     try {
       // Get the keypair for the current user.
       const keypair = await enokiFlow.getKeypair({ network: "testnet" });
-  
+
       const txb = new Transaction();
       // Add some transactions to the block...
       const coin = txb.splitCoins(txb.gas, [10]);
@@ -60,7 +51,7 @@ export const HoverEffect = ({ items, className }) => {
         [coin],
         "0x6defa84c04ded593f49a87093aa96ebfdfd3e42d372b6d52fd6f11962f211a4c"
       );
-  
+
       // Sign and execute the transaction, using the Enoki keypair
       const response = await client.signAndExecuteTransaction({
         signer: keypair,
@@ -73,24 +64,23 @@ export const HoverEffect = ({ items, className }) => {
         action: {
           label: "View",
           onClick: () => {
-          window.open(
-            "https://suiscan.xyz/testnet/tx/" +
-            response.digest,
-            "_blank"
-          );
+            window.open(
+              "https://suiscan.xyz/testnet/tx/" + response.digest,
+              "_blank"
+            );
           },
         },
-        });
+      });
 
-        localStorage.setItem(
-          "suitotalProject",
-          Number(localStorage.getItem("suitotalProject")) + 0.002
-        )
+      localStorage.setItem(
+        "suitotalProject",
+        Number(localStorage.getItem("suitotalProject")) + 0.002
+      );
     } catch (error) {
       console.error("Error funding project:", error);
       toast.error("Failed to fund project. Please try again.");
     }
-	}
+  }
 
   const fundProject = async (amount) => {
     if (!walletAddress) {
@@ -120,14 +110,14 @@ export const HoverEffect = ({ items, className }) => {
         action: {
           label: "View",
           onClick: () => {
-          window.open(
-            "https://explorer-testnet.maschain.com/" +
-            data.result.transactionHash,
-            "_blank"
-          );
+            window.open(
+              "https://explorer-testnet.maschain.com/" +
+                data.result.transactionHash,
+              "_blank"
+            );
           },
         },
-        });
+      });
     } catch (error) {
       console.error("Error funding project:", error);
       toast.error("Failed to fund project. Please try again.");
@@ -137,7 +127,7 @@ export const HoverEffect = ({ items, className }) => {
   return (
     <div
       className={cn(
-        "grid grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
+        "grid z-0 grid-cols-1 md:grid-cols-2  lg:grid-cols-3  py-10",
         className
       )}>
       {items.map((item, idx) => (
@@ -155,19 +145,25 @@ export const HoverEffect = ({ items, className }) => {
               <CardDescription>{item.description}</CardDescription>
             </div>
             <p>
-              <ProjectBalance suiBalance={suiTotal}  projectWalletAddress={projectWalletAddress} />
+              <ProjectBalance
+                suiBalance={suiTotal}
+                projectWalletAddress={projectWalletAddress}
+              />
             </p>
             <Modal>
-              <ModalTrigger className="bg-white text-black flex justify-center group/modal-btn mt-4">
-                <span className="text-center transition duration-500">
+              <ModalTrigger className="bg-white text-black flex justify-center group/modal-btn mt-4 border border-slate-300">
+                <span className="group-hover/modal-btn:translate-x-40 text-center transition duration-500">
                   CrowdFund Now!
                 </span>
+                <div className="-translate-x-40 group-hover/modal-btn:translate-x-0 flex items-center justify-center absolute inset-0 transition duration-500 text-white z-20">
+                  💰
+                </div>
               </ModalTrigger>
               <ModalBody>
                 <ModalContent>
                   <h4 className="text-lg md:text-2xl text-neutral-600 dark:text-neutral-100 font-bold text-center mb-8">
                     Crowdfund{" "}
-                    <span className="px-1 py-0.5 rounded-md bg-gray-100 dark:bg-neutral-800 dark:border-neutral-700 border border-gray-200">
+                    <span className="px-1 py-0.5 rounded-md bg-gray-100  dark:border-neutral-700 border border-gray-200">
                       Kuala Terengganu Station
                     </span>{" "}
                     now! ✈️
@@ -189,7 +185,7 @@ export const HoverEffect = ({ items, className }) => {
                           rotate: 0,
                           zIndex: 100,
                         }}
-                        className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:bg-neutral-800 dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden">
+                        className="rounded-xl -mr-4 mt-4 p-1 bg-white dark:border-neutral-700 border border-neutral-100 flex-shrink-0 overflow-hidden">
                         <Image
                           src={image}
                           alt="relevant images"
@@ -264,7 +260,7 @@ export const Card = ({ className, children }) => {
   return (
     <div
       className={cn(
-        "rounded-2xl h-full w-full p-5 overflow-hidden bg-black border border-transparent dark:border-white/[0.2] group-hover:border-slate-700 ",
+        "rounded-2xl h-full w-full p-5 overflow-hidden border border-slate/[0.2] group-hover:border-slate-700 ",
         className
       )}>
       {children}
@@ -273,9 +269,7 @@ export const Card = ({ className, children }) => {
 };
 export const CardTitle = ({ className, children }) => {
   return (
-    <h4 className={cn("text-zinc-100 font-bold tracking-wide", className)}>
-      {children}
-    </h4>
+    <h4 className={cn("font-bold tracking-wide", className)}>{children}</h4>
   );
 };
 export const CardDescription = ({ className, children }) => {
@@ -290,134 +284,126 @@ export const CardDescription = ({ className, children }) => {
   );
 };
 
-
 const PlaneIcon = ({ className }) => {
-	return (
-	  <svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	  >
-		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-		<path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z" />
-	  </svg>
-	);
-  };
-   
-  const VacationIcon = ({ className }) => {
-	return (
-	  <svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	  >
-		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-		<path d="M17.553 16.75a7.5 7.5 0 0 0 -10.606 0" />
-		<path d="M18 3.804a6 6 0 0 0 -8.196 2.196l10.392 6a6 6 0 0 0 -2.196 -8.196z" />
-		<path d="M16.732 10c1.658 -2.87 2.225 -5.644 1.268 -6.196c-.957 -.552 -3.075 1.326 -4.732 4.196" />
-		<path d="M15 9l-3 5.196" />
-		<path d="M3 19.25a2.4 2.4 0 0 1 1 -.25a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 1 .25" />
-	  </svg>
-	);
-  };
-   
-  const ElevatorIcon = ({ className }) => {
-	return (
-	  <svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	  >
-		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-		<path d="M5 4m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" />
-		<path d="M10 10l2 -2l2 2" />
-		<path d="M10 14l2 2l2 -2" />
-	  </svg>
-	);
-  };
-   
-  const FoodIcon = ({ className }) => {
-	return (
-	  <svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	  >
-		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-		<path d="M20 20c0 -3.952 -.966 -16 -4.038 -16s-3.962 9.087 -3.962 14.756c0 -5.669 -.896 -14.756 -3.962 -14.756c-3.065 0 -4.038 12.048 -4.038 16" />
-	  </svg>
-	);
-  };
-   
-  const MicIcon = ({ className }) => {
-	return (
-	  <svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	  >
-		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-		<path d="M15 12.9a5 5 0 1 0 -3.902 -3.9" />
-		<path d="M15 12.9l-3.902 -3.899l-7.513 8.584a2 2 0 1 0 2.827 2.83l8.588 -7.515z" />
-	  </svg>
-	);
-  };
-   
-  const ParachuteIcon = ({ className }) => {
-	return (
-	  <svg
-		xmlns="http://www.w3.org/2000/svg"
-		width="24"
-		height="24"
-		viewBox="0 0 24 24"
-		fill="none"
-		stroke="currentColor"
-		strokeWidth="2"
-		strokeLinecap="round"
-		strokeLinejoin="round"
-		className={className}
-	  >
-		<path stroke="none" d="M0 0h24v24H0z" fill="none" />
-		<path d="M22 12a10 10 0 1 0 -20 0" />
-		<path d="M22 12c0 -1.66 -1.46 -3 -3.25 -3c-1.8 0 -3.25 1.34 -3.25 3c0 -1.66 -1.57 -3 -3.5 -3s-3.5 1.34 -3.5 3c0 -1.66 -1.46 -3 -3.25 -3c-1.8 0 -3.25 1.34 -3.25 3" />
-		<path d="M2 12l10 10l-3.5 -10" />
-		<path d="M15.5 12l-3.5 10l10 -10" />
-	  </svg>
-	);
-  };
-  
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z" />
+    </svg>
+  );
+};
+
+const VacationIcon = ({ className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M17.553 16.75a7.5 7.5 0 0 0 -10.606 0" />
+      <path d="M18 3.804a6 6 0 0 0 -8.196 2.196l10.392 6a6 6 0 0 0 -2.196 -8.196z" />
+      <path d="M16.732 10c1.658 -2.87 2.225 -5.644 1.268 -6.196c-.957 -.552 -3.075 1.326 -4.732 4.196" />
+      <path d="M15 9l-3 5.196" />
+      <path d="M3 19.25a2.4 2.4 0 0 1 1 -.25a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 2 1a2.4 2.4 0 0 0 2 1a2.4 2.4 0 0 0 2 -1a2.4 2.4 0 0 1 2 -1a2.4 2.4 0 0 1 1 .25" />
+    </svg>
+  );
+};
+
+const ElevatorIcon = ({ className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M5 4m0 1a1 1 0 0 1 1 -1h12a1 1 0 0 1 1 1v14a1 1 0 0 1 -1 1h-12a1 1 0 0 1 -1 -1z" />
+      <path d="M10 10l2 -2l2 2" />
+      <path d="M10 14l2 2l2 -2" />
+    </svg>
+  );
+};
+
+const FoodIcon = ({ className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M20 20c0 -3.952 -.966 -16 -4.038 -16s-3.962 9.087 -3.962 14.756c0 -5.669 -.896 -14.756 -3.962 -14.756c-3.065 0 -4.038 12.048 -4.038 16" />
+    </svg>
+  );
+};
+
+const MicIcon = ({ className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M15 12.9a5 5 0 1 0 -3.902 -3.9" />
+      <path d="M15 12.9l-3.902 -3.899l-7.513 8.584a2 2 0 1 0 2.827 2.83l8.588 -7.515z" />
+    </svg>
+  );
+};
+
+const ParachuteIcon = ({ className }) => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="24"
+      height="24"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      className={className}>
+      <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+      <path d="M22 12a10 10 0 1 0 -20 0" />
+      <path d="M22 12c0 -1.66 -1.46 -3 -3.25 -3c-1.8 0 -3.25 1.34 -3.25 3c0 -1.66 -1.57 -3 -3.5 -3s-3.5 1.34 -3.5 3c0 -1.66 -1.46 -3 -3.25 -3c-1.8 0 -3.25 1.34 -3.25 3" />
+      <path d="M2 12l10 10l-3.5 -10" />
+      <path d="M15.5 12l-3.5 10l10 -10" />
+    </svg>
+  );
+};
