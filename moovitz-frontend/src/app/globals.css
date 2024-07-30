@@ -73,11 +73,11 @@
 @import '@radix-ui/colors/violet.css';
 
 /* reset */
-button,
+/* button,
 fieldset,
 input {
   all: unset;
-}
+} */
 
 .PopoverContent {
   z-index: 10000;
