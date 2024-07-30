@@ -20,7 +20,10 @@ const ProjectBalance = ({ projectWalletAddress, suiBalance }) => {
 
 			const data = await response.json();
 
-			setBalance(data.result);
+			if (Number(data.result)) {
+
+				setBalance(data.result);
+			}
 		} catch (error) {
 			console.error("Error fetching balance:", error);
 		}

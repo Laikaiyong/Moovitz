@@ -146,7 +146,7 @@ export const HoverEffect = ({ items, className }) => {
             </div>
             <p>
               <ProjectBalance
-                suiBalance={idx == 0 ? suiTotal : 0}
+                suiBalance={idx == 0 ? (suiTotal ? suiTotal : 0) : 0}
                 projectWalletAddress={idx == 0 ? projectWalletAddress : 0}
               />
             </p>
