@@ -250,7 +250,11 @@ export const HoverEffect = ({ items, className }) => {
                   </ModalFooter>
                 </ModalBody>
               ) : (
-                <ModalBody></ModalBody>
+                <ModalBody>
+                  <ModalContent>
+                    <h4>Content is in Pending</h4>
+                  </ModalContent>
+                </ModalBody>
               )}
             </Modal>
           </Card>
