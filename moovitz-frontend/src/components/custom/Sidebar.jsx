@@ -5,6 +5,7 @@ import { Drawer } from "vaul";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RiMenu2Line } from "react-icons/ri";
 import { ConnectButton } from "@mysten/dapp-kit";
+import { LogOut } from 'lucide-react';
 
 import { Transaction } from "@mysten/sui/transactions";
 import { useSuiClient } from "@mysten/dapp-kit";
@@ -132,6 +133,15 @@ export default function Sidebar() {
 											className='flex items-center space-x-2 text-black hover:text-blue-500 font-semibold'
 										>
 											<span>Projects</span>
+										</a>
+									</li>
+									<li>
+										<a 
+											href="/"
+											className="flex items-center space-x-2 text-black hover:text-red-500 font-semibold"
+										>
+											<LogOut />
+											<p>Sign Out</p>
 										</a>
 									</li>
 								</ul>

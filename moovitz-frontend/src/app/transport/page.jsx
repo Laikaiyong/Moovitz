@@ -35,20 +35,20 @@ export default function TransportPage() {
                 <td className="px-6 py-4 whitespace-nowrap underline text-blue-500">21dUQ87W...4QG6uuDe</td>
                 <td className="px-6 py-4 whitespace-nowrap">08:00 AM</td>
                 <td className="px-6 py-4 whitespace-nowrap">3 mins</td>
-                <td className="px-6 py-4 whitespace-nowrap">T410 Taman Melati to Wangsa Maju</td>
+                <td className="px-6 py-4 whitespace-nowrap"><span className="font-semibold">[T410]</span> Taman Melati to Wangsa Maju</td>
               </tr>
               <tr>
                 <td className="px-6 py-4 whitespace-nowrap underline text-blue-500">EgMx71BJ...JrnHUhVX</td>
                 <td className="px-6 py-4 whitespace-nowrap">09:00 AM</td>
                 <td className="px-6 py-4 whitespace-nowrap">15 mins</td>
-                <td className="px-6 py-4 whitespace-nowrap">KJ6 Taman Melati to Setiawangsa</td>
+                <td className="px-6 py-4 whitespace-nowrap"><span className="font-semibold">[KJ6]</span> Taman Melati to Setiawangsa</td>
               </tr>
               <tr>
-                <td className="px-6 py-4 whitespace-nowrap underlien text-blue-500">6SbAbgRg
+                <td className="px-6 py-4 whitespace-nowrap underline text-blue-500">6SbAbgRg
                 ...RsNSyfHG</td>
-                <td className="px-6 py-4 whitespace-nowrap">14:00 AM</td>
+                <td className="px-6 py-4 whitespace-nowrap">2:00 PM</td>
                 <td className="px-6 py-4 whitespace-nowrap">30 mins</td>
-                <td className="px-6 py-4 whitespace-nowrap">KJ17 Taman Melati to Abdullah Hukum</td>
+                <td className="px-6 py-4 whitespace-nowrap"><span className="font-semibold">[KJ17]</span> Taman Melati to Abdullah Hukum</td>
               </tr>
               {/* Add more rows as needed */}
             </tbody>
