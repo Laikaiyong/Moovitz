@@ -70,7 +70,7 @@ export default function TopUp() {
 	return (
 		<Dialog>
 			<DialogTrigger className='bg-blue-600 rounded-lg text-white px-3 py-2'>
-				Top Up Wallet
+				Top Up MOOV
 			</DialogTrigger>
 			<DialogContent className='bg-white'>
 				<DialogHeader>

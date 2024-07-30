@@ -85,7 +85,7 @@ const UserBalance = () => {
 					{isCopied ? <CheckIcon className='w-4 h-4' /> : <CopyIcon className='w-4 h-4' />}
 				</button>
 			</div>
-			<div className='mt-2'>Balance: {balance} tokens available</div>
+			<div className='mt-2'>Balance: {balance} MOOV</div>
 		</div>
 	);
 };
