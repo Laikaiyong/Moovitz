@@ -52,14 +52,14 @@ export default function BalancePage() {
       });
 
       if (!response.ok) {
-        throw new Error("Failed to fund project");
+        throw new Error("Failed to subscribe MY50");
       }
 
       const data = await response.json();
-      console.log("Funding initiated:", data);
+      console.log("MY50 Subscribe initiated:", data);
       window.localStorage.setItem("subscribedMY50", true);
       setSubscribe(true);
-      toast.success("Project funding initiated successfully!", {
+      toast.success("MY50 Pass Subscribe Successfully!", {
         action: {
           label: "View",
           onClick: () => {
@@ -72,8 +72,8 @@ export default function BalancePage() {
         },
       });
     } catch (error) {
-      console.error("Error funding project:", error);
-      toast.error("Failed to fund project. Please try again.");
+      console.error("Error subscribe MY50:", error);
+      toast.error("Failed to subscribe MY50. Please try again.");
     }
   };
 
