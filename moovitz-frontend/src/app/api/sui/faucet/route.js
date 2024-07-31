@@ -1,25 +1,22 @@
-
-import { getFaucetHost, requestSuiFromFaucetV1, requestSuiFromFaucetV0 } from '@mysten/sui/faucet';
-  export async function POST(req) {
+import { getFaucetHost, requestSuiFromFaucetV1, requestSuiFromFaucetV0 } from "@mysten/sui/faucet";
+export async function POST(req) {
 	try {
 		const { address } = await req.json();
-        console.log(address);
-      const response = await requestSuiFromFaucetV1({
-        host: getFaucetHost("testnet"),
-        recipient: address.toString(),
-      });
-      console.log(response);
+		console.log(address);
+		const response = await requestSuiFromFaucetV0({
+			host: getFaucetHost("testnet"),
+			recipient: address.toString(),
+		});
+		console.log(response);
 
-
-      //   window.location.href = "/balance";
-      return Response.json(response)
-    } catch (error) {
-    return Response.json({
-        "status": "Error"
-    })
-  }
+		//   window.location.href = "/balance";
+		return Response.json(response);
+	} catch (error) {
+		return Response.json({
+			status: "Error",
+		});
+	}
 }
-
 
 // export async function POST(req) {
 //         const { recipient } = await req.json();
