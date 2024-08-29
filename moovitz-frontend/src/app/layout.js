@@ -7,6 +7,8 @@ import { Toaster } from "@/components/sonner/toast";
 
 const poppins = Poppins({ subsets: ["latin"], weight: ["400", "600", "700"] });
 
+export const runtime = "edge";
+
 export const metadata = {
   title: "Moovitz",
   description:
