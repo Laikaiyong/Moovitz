@@ -12,9 +12,6 @@ import {
 } from "@/components/ui/glowing-stars";
 import { toast } from "sonner";
 
-import SuiUserBalance from "@/components/custom/SuiUserBalance";
-import TopUpSui from "@/components/custom/TopUpSui";
-
 export default function BalancePage() {
   const [walletAddress, setWalletAddress] = useState("");
   const [subscribe, setSubscribe] = useState(false);
@@ -105,7 +102,6 @@ export default function BalancePage() {
               className={"bg-[linear-gradient(110deg,#333_0.6%,#222)]"}>
               <GlowingStarsTitle>
                 {" "}
-                <SuiUserBalance />
               </GlowingStarsTitle>
               <div className="flex justify-between items-end">
                 <GlowingStarsDescription className={"mt-5"}>

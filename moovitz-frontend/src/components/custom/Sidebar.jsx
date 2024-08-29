@@ -4,15 +4,9 @@ import { useEffect, useState } from "react";
 import { Drawer } from "vaul";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { RiMenu2Line } from "react-icons/ri";
-import { ConnectButton } from "@mysten/dapp-kit";
 import { LogOut } from 'lucide-react';
 
-import { Transaction } from "@mysten/sui/transactions";
-import { useSuiClient } from "@mysten/dapp-kit";
-import { useEnokiFlow, useZkLogin } from "@mysten/enoki/react";
-import { getFaucetHost, requestSuiFromFaucetV0 } from "@mysten/sui/faucet";
 import { toast } from "sonner";
-import { BalanceChange } from "@mysten/sui/client";
 import { LoaderCircle, ExternalLink } from "lucide-react";
 import CreateMasWalletDialog from "@/components/custom/CreateMasWalletDialog";
 import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';

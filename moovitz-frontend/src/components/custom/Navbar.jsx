@@ -1,7 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import { useEnokiFlow, useZkLogin } from "@mysten/enoki/react";
 import ShimmerButton from "@/components/magicui/shimmer-button";
 import { toast } from "sonner";
 import Image from "next/image";
@@ -9,37 +8,7 @@ import * as Popover from "@radix-ui/react-popover";
 import { RowSpacingIcon, EnterIcon, Cross2Icon } from "@radix-ui/react-icons";
 
 export default function Navbar() {
-  const enokiFlow = useEnokiFlow();
   const [menuOpen, setMenuOpen] = useState(false);
-  const startGoogle = async () => {
-    const promise = async () => {
-      window.location.href = await enokiFlow.createAuthorizationURL({
-        provider: "google",
-        clientId: process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID,
-        redirectUrl: `${window.location.origin}/auth`,
-        network: "testnet",
-      });
-    };
-
-    toast.promise(promise, {
-      loading: "Logging in...",
-    });
-  };
-
-  const startFacebook = async () => {
-    const promise = async () => {
-      window.location.href = await enokiFlow.createAuthorizationURL({
-        provider: "facebook",
-        clientId: process.env.NEXT_PUBLIC_FACEBOOK_CLIENT_ID,
-        redirectUrl: `${window.location.origin}/auth`,
-        network: "testnet",
-      });
-    };
-
-    toast.promise(promise, {
-      loading: "Logging in...",
-    });
-  };
 
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
