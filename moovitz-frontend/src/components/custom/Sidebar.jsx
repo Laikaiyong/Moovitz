@@ -15,39 +15,17 @@ import { toast } from "sonner";
 import { BalanceChange } from "@mysten/sui/client";
 import { LoaderCircle, ExternalLink } from "lucide-react";
 import CreateMasWalletDialog from "@/components/custom/CreateMasWalletDialog";
+import { WalletMultiButton } from '@solana/wallet-adapter-react-ui';
 
 export default function Sidebar() {
-	const client = useSuiClient(); // The SuiClient instance
-	const enokiFlow = useEnokiFlow(); // The EnokiFlow instance
-	const { address: suiAddress } = useZkLogin(); // The zkLogin instance
+	// const client = useSuiClient(); // The SuiClient instance
+	// const enokiFlow = useEnokiFlow(); // The EnokiFlow instance
+	// const { address: suiAddress } = useZkLogin(); // The zkLogin instance
 
 	/* The account information of the current user. */
 	const [balance, setBalance] = useState(0);
 	const [accountLoading, setAccountLoading] = useState(true);
 
-	useEffect(() => {
-		if (suiAddress) {
-			getAccountInfo();
-		}
-	}, [suiAddress]);
-
-	const getAccountInfo = async () => {
-		if (!suiAddress) {
-			return;
-		}
-
-		try {
-			setAccountLoading(true);
-
-			const balance = await client.getBalance({ owner: suiAddress });
-			setBalance(parseInt(balance.totalBalance) / 10 ** 9);
-
-			setAccountLoading(false);
-		} catch (error) {
-			console.log(error);
-			setAccountLoading(false);
-		}
-	};
 
 	return (
 		<Drawer.Root direction='left'>
@@ -70,38 +48,9 @@ export default function Sidebar() {
 							</div>
 							<div>
 								<ul className='mt-10 space-y-6 lg:space-y-8 lg:text-[18px]'>
+								
 									<li className='flex content-center'>
-										<Avatar className='my-auto mx-2 w-[25px] h-[25px]'>
-											<AvatarImage src='https://blog.sui.io/content/images/2023/04/Sui_Droplet_Logo_Blue-3.png' />
-											<AvatarFallback>Sui Logo</AvatarFallback>
-										</Avatar>
-										{/* <ConnectButton /> */}
-										<div className='flex'>
-											<p>
-												{accountLoading ? (
-													<LoaderCircle className='animate-spin' />
-												) : (
-                          <div className='bg-blue-100 mx-4 rounded-3xl text-blue-800 px-3 py-2'>
-													${suiAddress?.slice(0, 5)}...${suiAddress?.slice(
-														63
-													)} - ${balance.toPrecision(3)} SUI
-                        </div>
-												)}
-											</p>
-											<a
-												href={`https://suiscan.xyz/testnet/account/${suiAddress}`}
-												target='_blank'
-											>
-												<ExternalLink width={16} />
-											</a>
-										</div>
-									</li>
-									<li className='flex content-center'>
-										<Avatar className='my-auto mx-2 w-[25px] h-[25px]'>
-											<AvatarImage src='https://cdn.prod.website-files.com/66092c4a4ffe765e2ec07651/660cfc8db2504b903f888e0d_MasChain%20loggs.png' />
-											<AvatarFallback>Sui Logo</AvatarFallback>
-										</Avatar>
-										<CreateMasWalletDialog />
+										<WalletMultiButton />
 									</li>
 									<li>
 										<a

@@ -81,46 +81,13 @@ export default function Navbar() {
           </li>
         </ul>
         <div className="mt-4 lg:mt-0 lg:ml-4 lg:hidden">
-        <Popover.Root>
-          <Popover.Trigger asChild>
+|
           <ShimmerButton>
-          <div className="flex">
+          <a href="/transport" className="flex">
             <p>Sign In</p>
-          </div>
+          </a>
         </ShimmerButton>
-          </Popover.Trigger>
-          <Popover.Portal>
-          <Popover.Content className="PopoverContent text-center" sideOffset={5}>
-              <div className="flex space-x-4 p-2">
-                <button
-                  className="IconButton flex items-center justify-center hover:outline-none hover:ring-2 hover:ring-slate-600 hover:ring-offset-2"
-                  onClick={() => {
-                    startGoogle();
-                  }}>
-                  <Image
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/120px-Google_%22G%22_logo.svg.png"
-                    width={20}
-                    height={20}
-                    className="m-auto"
-                  />
-                </button>
-                <button
-                  className="IconButton flex items-center justify-center hover:outline-none hover:ring-2 hover:ring-slate-600 hover:ring-offset-2"
-                  onClick={() => {
-                    startFacebook();
-                  }}>
-                  <Image
-                    src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b9/2023_Facebook_icon.svg/1024px-2023_Facebook_icon.svg.png"
-                    width={20}
-                    height={20}
-                    className="m-auto"
-                  />
-                </button>
-              </div>
-              <Popover.Arrow className="PopoverArrow" />
-            </Popover.Content>
-          </Popover.Portal>
-        </Popover.Root>
+         
         </div>
       </div>
       <div className="mt-4 lg:mt-0 lg:ml-4 hidden lg:block z-30">

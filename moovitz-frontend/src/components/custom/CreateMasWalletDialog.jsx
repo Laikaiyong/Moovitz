@@ -12,6 +12,7 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { toast } from "sonner";
 import { LoaderCircle, ExternalLink } from "lucide-react";
+import { Keypair } from "@solana/web3.js";
 
 export default function CreateMasWalletDialog() {
 	const [name, setName] = useState("");
@@ -22,75 +23,77 @@ export default function CreateMasWalletDialog() {
 	const [balance, setBalance] = useState("0");
 
 	useEffect(() => {
-		const storedAddress = localStorage.getItem("walletAddress");
+		const storedAddress = JSON.parse(localStorage.getItem("walletAddress"));
 		if (storedAddress) {
-			setWalletAddress(storedAddress);
-			fetchBalance(storedAddress);
+			setWalletAddress(
+				Keypair.fromSecretKey(
+					Uint8Array.from(storedAddress._keypair.publicKey)));
+			// fetchBalance(storedAddress);
 		}
 	}, []);
 
-	const handleSubmit = async (e) => {
-		e.preventDefault();
-		try {
-			const response = await fetch("/api/maschain/wallet/create-wallet", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ name, email }),
-			});
+	// const handleSubmit = async (e) => {
+	// 	e.preventDefault();
+	// 	try {
+	// 		const response = await fetch("/api/maschain/wallet/create-wallet", {
+	// 			method: "POST",
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 			body: JSON.stringify({ name, email }),
+	// 		});
 
-			if (response.ok) {
-				const data = await response.json();
-				console.log("API Response:", data); // Log the entire response for debugging
-				if (data.result.wallet && data.result.wallet.wallet_address) {
-					const address = data.result.wallet.wallet_address;
-					localStorage.setItem("walletAddress", address);
-					setWalletAddress(address);
-					toast.success("Wallet created successfully!");
-				} else {
-					throw new Error("Wallet address not found in the response");
-				}
-			} else {
-				const errorData = await response.json();
-				throw new Error(errorData.message || "Failed to create wallet");
-			}
-		} catch (error) {
-			console.error("Full error:", error);
-			toast.error("Error creating wallet: " + error.message);
-		}
-	};
+	// 		if (response.ok) {
+	// 			const data = await response.json();
+	// 			console.log("API Response:", data); // Log the entire response for debugging
+	// 			if (data.result.wallet && data.result.wallet.wallet_address) {
+	// 				const address = data.result.wallet.wallet_address;
+	// 				localStorage.setItem("walletAddress", address);
+	// 				setWalletAddress(address);
+	// 				toast.success("Wallet created successfully!");
+	// 			} else {
+	// 				throw new Error("Wallet address not found in the response");
+	// 			}
+	// 		} else {
+	// 			const errorData = await response.json();
+	// 			throw new Error(errorData.message || "Failed to create wallet");
+	// 		}
+	// 	} catch (error) {
+	// 		console.error("Full error:", error);
+	// 		toast.error("Error creating wallet: " + error.message);
+	// 	}
+	// };
 
-	const fetchBalance = async (address) => {
-		setIsLoading(true);
-		setError(null);
-		try {
-			const response = await fetch("/api/maschain/token/balance", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ wallet_address: address }),
-			});
+	// const fetchBalance = async (address) => {
+	// 	setIsLoading(true);
+	// 	setError(null);
+	// 	try {
+	// 		const response = await fetch("/api/maschain/token/balance", {
+	// 			method: "POST",
+	// 			headers: {
+	// 				"Content-Type": "application/json",
+	// 			},
+	// 			body: JSON.stringify({ wallet_address: address }),
+	// 		});
 
-			if (!response.ok) {
-				throw new Error("Failed to fetch balance");
-			}
+	// 		if (!response.ok) {
+	// 			throw new Error("Failed to fetch balance");
+	// 		}
 
-			const data = await response.json();
-			if (data.result) {
-				setBalance(data.result);
-			} else {
-				throw new Error("Invalid response format");
-			}
-		} catch (error) {
-			console.error("Error fetching balance:", error);
-			setError("Failed to fetch balance. Please try again later.");
-			toast.error("Error fetching balance");
-		} finally {
-			setIsLoading(false);
-		}
-	};
+	// 		const data = await response.json();
+	// 		if (data.result) {
+	// 			setBalance(data.result);
+	// 		} else {
+	// 			throw new Error("Invalid response format");
+	// 		}
+	// 	} catch (error) {
+	// 		console.error("Error fetching balance:", error);
+	// 		setError("Failed to fetch balance. Please try again later.");
+	// 		toast.error("Error fetching balance");
+	// 	} finally {
+	// 		setIsLoading(false);
+	// 	}
+	// };
 	if (walletAddress) {
 		return (
 			<div className='flex'>
@@ -121,37 +124,6 @@ export default function CreateMasWalletDialog() {
 					<DialogTitle>Create Mas Wallet</DialogTitle>
 					<DialogDescription>Enter your details to create a new wallet.</DialogDescription>
 				</DialogHeader>
-				<form onSubmit={handleSubmit} className='space-y-4'>
-					<div>
-						<label htmlFor='name' className='block text-sm font-medium text-gray-700'>
-							Name
-						</label>
-						<Input
-							id='name'
-							type='text'
-							value={name}
-							onChange={(e) => setName(e.target.value)}
-							required
-							className='mt-1 text-white'
-						/>
-					</div>
-					<div>
-						<label htmlFor='email' className='block text-sm font-medium text-gray-700'>
-							Email
-						</label>
-						<Input
-							id='email'
-							type='email'
-							value={email}
-							onChange={(e) => setEmail(e.target.value)}
-							required
-							className='mt-1 text-white'
-						/>
-					</div>
-					<Button type='submit' className='w-full'>
-						Create Wallet
-					</Button>
-				</form>
 			</DialogContent>
 		</Dialog>
 	);

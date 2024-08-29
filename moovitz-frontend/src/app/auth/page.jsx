@@ -3,6 +3,7 @@
 import { useAuthCallback } from "@mysten/enoki/react";
 import { useEffect } from "react";
 import { ScaleLoader } from "react-spinners";
+import { Keypair } from "@solana/web3.js";
 
 
 export default function Page() {
@@ -12,6 +13,8 @@ export default function Page() {
   useEffect(() => {
     if (handled) {
      window.location.href = "/transport";
+     let keypair = Keypair.generate();
+     localStorage.setItem("walletAddress", JSON.stringify(keypair));
     }
 }, [handled]);
 

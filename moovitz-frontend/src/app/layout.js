@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
 import { Oxygen } from "next/font/google";
 import "./globals.css";
-import Providers from "./providers";
+import { Providers } from "./providers";
 import Sidebar from "@/components/custom/Sidebar";
 import { Toaster } from "@/components/sonner/toast";
 
