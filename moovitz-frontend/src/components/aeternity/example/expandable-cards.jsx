@@ -206,16 +206,16 @@ export const CloseIcon = () => {
 
 const cards = [
   {
-    description: "Reloaded SUI wallet",
+    description: "Reloaded SOL wallet",
     title: "Reload Wallet",
     src: "https://images.unsplash.com/photo-1599050751795-6cdaafbc2319?q=80&w=3328&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "View",
-    ctaLink: "https://suiscan.xyz/mainnet/tx/7PxsAkXV3DVdGtStPbcsFFSb5Niygrw2yLqg3mGLS2Jr",
+    ctaLink: "https://solscan.io/tx/4keEAGoDSXtYQjfMJ3ZjjdNpbL5MdSmJF8oxF5fhN37GWt224Mve19oYHiCTgKFV9Sq4STBrGGnuYiqKGQJcpCA6",
     content: () => {
       return (
         <ul>
             <li>
-                Transaction Hash: 7PxsAkXV3DVdGtStPbcsFFSb5Niygrw2yLqg3mGLS2Jr
+                Transaction Hash: 4keEAGoDSXtYQjfMJ3ZjjdNpbL5MdSmJF8oxF5fhN37GWt224Mve19oYHiCTgKFV9Sq4STBrGGnuYiqKGQJcpCA6
             </li>
             <li>
                 Sender: 0x00878369f475a454939af7b84cdd981515b1329f159a1aeb9bf0f8899e00083a
@@ -232,12 +232,12 @@ const cards = [
     title: "Subscribe MY50 Pass",
     src: "https://images.unsplash.com/photo-1504970544576-86deafcd75ba?q=80&w=3380&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "View",
-    ctaLink: "https://suiscan.xyz/mainnet/tx/GLPzFH5rpEk8TbugytkE9oJ7UKkiwBqE1xAFpuEm8dBa",
+    ctaLink: "https://solscan.io/tx/u5ftnjTGmFSF6gV6dwG73XqDc69xeJztyYpYKKRgNPdjaAJy3Sut1YASgcxocCSQotCqSDkUTCamczBDrr2toMS",
     content: () => {
       return (
         <ul>
             <li>
-                Transaction Hash: GLPzFH5rpEk8TbugytkE9oJ7UKkiwBqE1xAFpuEm8dBa
+                Transaction Hash: u5ftnjTGmFSF6gV6dwG73XqDc69xeJztyYpYKKRgNPdjaAJy3Sut1YASgcxocCSQotCqSDkUTCamczBDrr2toMS
             </li>
             <li>
                 Sender: 0x0000000000000000000000000000000000000000000000000000000000000000
@@ -251,11 +251,11 @@ const cards = [
   },
 
   {
-    description: "Crowd Funded 2 MOOV to KT Station",
+    description: "Crowd Funded 2 SOL to KT Station",
     title: "Crowd Fund",
     src: "https://images.unsplash.com/photo-1527839321757-ad3a2f2be351?q=80&w=3540&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
     ctaText: "View",
-    ctaLink: "https://explorer-testnet.maschain.com/0xb5eb98e4d927670bb5a0a60dc580c93b95c5ea5cf1773400ec512425b583adf5",
+    ctaLink: "https://solscan.io/tx/u5ftnjTGmFSF6gV6dwG73XqDc69xeJztyYpYKKRgNPdjaAJy3Sut1YASgcxocCSQotCqSDkUTCamczBDrr2toMS",
     content: () => {
       return (
         <ul>

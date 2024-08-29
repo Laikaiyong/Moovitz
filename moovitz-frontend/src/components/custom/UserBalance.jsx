@@ -3,59 +3,43 @@ import { useState, useEffect } from "react";
 import { toast } from "sonner";
 import { CopyIcon, CheckIcon } from "@radix-ui/react-icons";
 
+// Wallet
+import { useWallet, useConnection } from '@solana/wallet-adapter-react';
+import { Connection, PublicKey, LAMPORTS_PER_SOL } from '@solana/web3.js'
+
+
 const UserBalance = () => {
-	const [balance, setBalance] = useState("0");
-	const [walletAddress, setWalletAddress] = useState("");
-	const [isLoading, setIsLoading] = useState(true);
-	const [error, setError] = useState(null);
+	const wallet = useWallet();
+	const [balance, setBalance] = useState(0);
 	const [isCopied, setIsCopied] = useState(false);
 
-	useEffect(() => {
-		const storedAddress = localStorage.getItem("walletAddress");
-		if (storedAddress) {
-			setWalletAddress(storedAddress);
-			fetchBalance(storedAddress);
-		} else {
-			setIsLoading(false);
-			setError("No wallet address found. Please create a wallet first.");
-		}
-	}, []);
-
-	const fetchBalance = async (address) => {
-		setIsLoading(true);
-		setError(null);
+	async function getUserSOLBalance(publicKey, connection) {
+		let balance = 0;
 		try {
-			const response = await fetch("/api/maschain/token/balance", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/json",
-				},
-				body: JSON.stringify({ wallet_address: address }),
-			});
-
-			console.log(response);
-
-			if (!response.ok) {
-				throw new Error("Failed to fetch balance");
-			}
-
-			const data = await response.json();
-			if (data.result) {
-				setBalance(data.result);
-			} else {
-				throw new Error("Invalid response format");
-			}
-		} catch (error) {
-			console.error("Error fetching balance:", error);
-			setError("Failed to fetch balance. Please try again later.");
-			toast.error("Error fetching balance");
-		} finally {
-			setIsLoading(false);
+		  balance = await connection.getBalance(
+			publicKey,
+			'confirmed'
+		  );
+		  balance = balance / LAMPORTS_PER_SOL;
+		} catch (e) {
+		  console.log(`error getting balance: `, e);
 		}
-	};
+		setBalance(balance);
+		  console.log(`balance updated, `, balance);
+		}
+	
+	const { connection } = useConnection();
+
+	useEffect(() => {
+		if (wallet.publicKey) {
+		  getUserSOLBalance(wallet.publicKey, connection);
+		}
+	  }, [wallet.publicKey, connection, getUserSOLBalance])
+
+	
 	const copyToClipboard = async () => {
 		try {
-			await navigator.clipboard.writeText(walletAddress);
+			await navigator.clipboard.writeText(wallet.publicKey);
 			setIsCopied(true);
 			toast.success("Wallet address copied to clipboard");
 			setTimeout(() => setIsCopied(false), 2000);
@@ -63,19 +47,11 @@ const UserBalance = () => {
 			toast.error("Failed to copy address");
 		}
 	};
-	if (isLoading) {
-		return <div className='text-md text-white'>Loading balance...</div>;
-	}
-
-	if (error) {
-		return <div className='text-sm text-red-500'>{error}</div>;
-	}
-
 	return (
 		<div className='text-sm text-white space-y-6'>
 						<div className='flex items-center space-x-2'>
 				<span className='truncate max-w-[200px]'>
-				{walletAddress ? `${walletAddress}` : "No wallet found"}
+				{wallet ? `${wallet.publicKey}` : "No wallet found"}
 				</span>
 				<button
 					onClick={copyToClipboard}
@@ -85,8 +61,14 @@ const UserBalance = () => {
 					{isCopied ? <CheckIcon className='w-4 h-4' /> : <CopyIcon className='w-4 h-4' />}
 				</button>
 			</div>
-			<div className='mt-2'>Balance: {balance} MOOV</div>
-		</div>
+			{wallet &&
+			<div className="">
+			<div className="mt-2">
+              {(balance || 0).toLocaleString()} SOL
+              </div>
+			  </div>}
+			
+          </div>
 	);
 };
 

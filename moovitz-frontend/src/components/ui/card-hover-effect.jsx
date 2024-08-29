@@ -1,4 +1,14 @@
 "use client";
+import { useConnection, useWallet } from "@solana/wallet-adapter-react";
+import {
+  Keypair,
+  SystemProgram,
+  Transaction,
+  TransactionMessage,
+  TransactionSignature,
+  VersionedTransaction,
+  PublicKey
+} from "@solana/web3.js";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import Link from "next/link";
@@ -9,12 +19,14 @@ import {
   ModalFooter,
   ModalTrigger,
 } from "../ui/animated-modal";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import { toast } from "sonner";
 import ProjectBalance from "../custom/ProjectBalance";
 import Image from "next/image";
 
 export const HoverEffect = ({ items, className }) => {
+  const { connection } = useConnection();
+  const { publicKey, sendTransaction } = useWallet();
   let [hoveredIndex, setHoveredIndex] = useState(null);
   const [walletAddress, setWalletAddress] = useState("");
   const [suiTotal, setSuiTotal] = useState("");
@@ -23,53 +35,159 @@ export const HoverEffect = ({ items, className }) => {
   const images = ["/kt1.png", "/kt2.png", "/kt3.png", "/kt4.png", "/kt5.png"];
 
   useEffect(() => {
-    const storedAddress = localStorage.getItem("walletAddress");
+    const storedAddress = localStorage.getItem("suitotalProject");
     if (storedAddress) {
-      setWalletAddress(storedAddress);
+      setSuiTotal(storedAddress);
     }
   }, []);
 
-  const fundProject = async (amount) => {
-    if (!walletAddress) {
-      toast.error("Please create a wallet first");
+  const fundSolProject = useCallback(async () => {
+    if (!publicKey) {
+      notify({ type: "error", message: `Wallet not connected!` });
+      console.log("error", `Send Transaction: Wallet not connected!`);
       return;
     }
 
+    let signature = "";
     try {
-      const response = await fetch("/api/maschain/token/transfer", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          amount,
-          walletAddress,
+      // Create instructions to send, in this case a simple transfer
+      const instructions = [
+        SystemProgram.transfer({
+          fromPubkey: publicKey,
+          toPubkey: new PublicKey("Cnw2uPvDngFTQV9j2MRCAMVLHYvaht3218zV5NrSTXz2"),
+          lamports: 2_000_000,
         }),
-      });
+      ];
 
-      if (!response.ok) {
-        throw new Error("Failed to fund project");
-      }
+      // Get the lates block hash to use on our transaction and confirmation
+      let latestBlockhash = await connection.getLatestBlockhash();
 
-      const data = await response.json();
-      console.log("Funding initiated:", data);
+      // Create a new TransactionMessage with version and compile it to legacy
+      const messageLegacy = new TransactionMessage({
+        payerKey: publicKey,
+        recentBlockhash: latestBlockhash.blockhash,
+        instructions,
+      }).compileToLegacyMessage();
+
+      // Create a new VersionedTransacction which supports legacy and v0
+      const transation = new VersionedTransaction(messageLegacy);
+
+      // Send transaction and await for signature
+      signature = await sendTransaction(transation, connection);
+
+      // Send transaction and await for signature
+      await connection.confirmTransaction(
+        { signature, ...latestBlockhash },
+        "confirmed"
+      );
+
+      console.log(signature);
       toast.success("Project funding initiated successfully!", {
         action: {
           label: "View",
           onClick: () => {
             window.open(
-              "https://explorer-testnet.maschain.com/" +
-                data.result.transactionHash,
+              "https://solscan.io/tx/" + signature + "?cluster=devnet",
               "_blank"
             );
           },
         },
       });
+            localStorage.setItem(
+        "suitotalProject",
+        Number(localStorage.getItem("suitotalProject")) + 0.002
+      );
     } catch (error) {
       console.error("Error funding project:", error);
       toast.error("Failed to fund project. Please try again.");
+      return;
     }
-  };
+  }, [publicKey, connection, sendTransaction]);
+
+  // async function fundSolProject() {
+  //   try {
+  //     // Get the keypair for the current user.
+  //     const keypair = await enokiFlow.getKeypair({ network: "testnet" });
+
+  //     const txb = new Transaction();
+  //     // Add some transactions to the block...
+  //     const coin = txb.splitCoins(txb.gas, [10]);
+  //     txb.transferObjects(
+  //       [coin],
+  //       "0x6defa84c04ded593f49a87093aa96ebfdfd3e42d372b6d52fd6f11962f211a4c"
+  //     );
+
+  //     // Sign and execute the transaction, using the Enoki keypair
+  //     const response = await client.signAndExecuteTransaction({
+  //       signer: keypair,
+  //       transaction: txb,
+  //     });
+
+  //     // const data = await response.json();
+  //     // console.log(data);
+  //     toast.success("Project funding initiated successfully!", {
+  //       action: {
+  //         label: "View",
+  //         onClick: () => {
+  //           window.open(
+  //             "https://solscan.io/tx/" + response.digest + "?cluster=devnet",
+  //             "_blank"
+  //           );
+  //         },
+  //       },
+  //     });
+
+  //     localStorage.setItem(
+  //       "suitotalProject",
+  //       Number(localStorage.getItem("suitotalProject")) + 0.002
+  //     );
+  //   } catch (error) {
+  //     console.error("Error funding project:", error);
+  //     toast.error("Failed to fund project. Please try again.");
+  //   }
+  // }
+
+  // const fundProject = async (amount) => {
+  //   if (!walletAddress) {
+  //     toast.error("Please create a wallet first");
+  //     return;
+  //   }
+
+  //   try {
+  //     const response = await fetch("/api/maschain/token/transfer", {
+  //       method: "POST",
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //       },
+  //       body: JSON.stringify({
+  //         amount,
+  //         walletAddress,
+  //       }),
+  //     });
+
+  //     if (!response.ok) {
+  //       throw new Error("Failed to fund project");
+  //     }
+
+  //     const data = await response.json();
+  //     console.log("Funding initiated:", data);
+  //     toast.success("Project funding initiated successfully!", {
+  //       action: {
+  //         label: "View",
+  //         onClick: () => {
+  //           window.open(
+  //             "https://explorer-testnet.maschain.com/" +
+  //               data.result.transactionHash,
+  //             "_blank"
+  //           );
+  //         },
+  //       },
+  //     });
+  //   } catch (error) {
+  //     console.error("Error funding project:", error);
+  //     toast.error("Failed to fund project. Please try again.");
+  //   }
+  // };
 
   return (
     <div
@@ -184,15 +302,15 @@ export const HoverEffect = ({ items, className }) => {
                     </div>
                   </ModalContent>
                   <ModalFooter className="gap-4">
-                    <button
+                    {/* <button
                       className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28"
                       onClick={() => fundProject("2")}>
                       Fund 2 MOOV
-                    </button>
+                    </button> */}
                     <button
                       className="bg-black text-white dark:bg-white dark:text-black text-sm px-2 py-1 rounded-md border border-black w-28"
-                      onClick={() => fundSuiProject(0.002)}>
-                      Fund 0.002 SUI
+                      onClick={() => fundSolProject()}>
+                      Fund 0.002 SOL
                     </button>
                   </ModalFooter>
                 </ModalBody>

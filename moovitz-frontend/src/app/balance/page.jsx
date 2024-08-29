@@ -99,26 +99,13 @@ export default function BalancePage() {
           </section>
           <section>
             <GlowingStarsBackgroundCard
-              className={"bg-[linear-gradient(110deg,#333_0.6%,#222)]"}>
-              <GlowingStarsTitle>
-                {" "}
-              </GlowingStarsTitle>
-              <div className="flex justify-between items-end">
-                <GlowingStarsDescription className={"mt-5"}>
-                  <TopUpSui />
-                </GlowingStarsDescription>
-              </div>
-            </GlowingStarsBackgroundCard>
-          </section>
-          <section>
-            <GlowingStarsBackgroundCard
               className={"bg-[linear-gradient(110deg,#0099ff_0.6%,#999)]"}>
-              <GlowingStarsTitle>MY50 Pass - 2 MOOV</GlowingStarsTitle>
+              <GlowingStarsTitle>MY50 Pass - 0.0002 SOL</GlowingStarsTitle>
               <div className="flex justify-between items-end">
                 <GlowingStarsDescription className={"mt-5"}>
                   <button
                     onClick={() => {
-                        handleButtonClick("2");
+                        handleButtonClick("0.0002");
                     }}
                     className="bg-blue-600 rounded-lg text-white px-3 py-2">
                     {subscribe
