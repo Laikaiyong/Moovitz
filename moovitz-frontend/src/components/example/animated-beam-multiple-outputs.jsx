@@ -187,7 +187,7 @@ const Icons = {
   messenger: () => (
     <Avatar className="w-[30px] h-[30px]">
     <AvatarImage
-      src="https://blog.sui.io/content/images/2023/04/Sui_Droplet_Logo_Blue-3.png"
+      src="https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png"
     />
     <AvatarFallback>Moovitz Logo</AvatarFallback>
     </Avatar>

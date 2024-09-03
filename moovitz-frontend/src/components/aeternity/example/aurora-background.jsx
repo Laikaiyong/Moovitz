@@ -23,7 +23,7 @@ export function AuroraBackgroundDemo() {
         <div className="font-extralight text-base md:text-2xl dark:text-neutral-200 py-4">
           together with Moovitz
         </div>
-        <a href="https://www.canva.com/design/DAGMGgnm47E/l4ks1Tk5hTTmbVnjGYv-rA/view?utm_content=DAGMGgnm47E&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank"  className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
+        <a href="https://www.canva.com/design/DAGPPbZ8ckQ/P-B7YgPZCpJun_vudR1ruw/view?utm_content=DAGPPbZ8ckQ&utm_campaign=designshare&utm_medium=link&utm_source=editor" target="_blank"  className="bg-black dark:bg-white rounded-full w-fit text-white dark:text-black px-4 py-2">
           Read Whitepaper
         </a>
       </motion.div>

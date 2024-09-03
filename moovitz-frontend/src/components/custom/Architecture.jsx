@@ -40,7 +40,7 @@ export function ArchitectureBeam() {
       <div className="flex size-full flex-col max-w-lg max-h-[200px] items-stretch justify-between gap-10">
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div1Ref}>
-            <Icons.masverse />
+            <Icons.datagovmy />
           </Circle>
           <Circle ref={div5Ref}>
             <Icons.nextJS />
@@ -48,7 +48,7 @@ export function ArchitectureBeam() {
         </div>
         <div className="flex flex-row items-center justify-between">
           <Circle ref={div2Ref}>
-            <Icons.sui />
+            <Icons.solana />
           </Circle>
           <Circle ref={div4Ref} className="size-16">
             <Icons.moovitz />
@@ -113,12 +113,12 @@ export function ArchitectureBeam() {
 }
 
 const Icons = {
-  sui: () => (
+  solana: () => (
   <Avatar className="w-[30px] h-[30px]">
     <AvatarImage
-      src="https://blog.sui.io/content/images/2023/04/Sui_Droplet_Logo_Blue-3.png"
+      src="https://upload.wikimedia.org/wikipedia/en/b/b9/Solana_logo.png"
     />
-    <AvatarFallback>Sui Logo</AvatarFallback>
+    <AvatarFallback>Solana Logo</AvatarFallback>
   </Avatar>
   ),
   moovitz: () => (
@@ -129,12 +129,12 @@ const Icons = {
     <AvatarFallback>Moovitz Logo</AvatarFallback>
   </Avatar>
   ),
-  masverse: () => (
+  datagovmy: () => (
     <Avatar className="w-[45px] h-[30px]">
       <AvatarImage 
-        src="https://adbfqiixen.cloudimg.io/fit/500x320/cffffff/https://seekers-web-backup.s3.ap-southeast-1.amazonaws.com/companies/MuoK2pWs5l3bs2TXuzXeQTHzCaqBrIc803QLvghc.png"
+        src="https://archive.data.gov.my/i/icons/android-chrome-256x256.png"
       />
-      <AvatarFallback>Masverse Logo</AvatarFallback>
+      <AvatarFallback>Data Gov My Logo</AvatarFallback>
     </Avatar>
   ),
   vercel: () => (
@@ -164,7 +164,7 @@ const Icons = {
   aceternityUI: () => (
     <Avatar className="w-[30px] h-[30px]">
       <AvatarImage 
-        src="https://pbs.twimg.com/profile_images/1748413098740920320/2RGyMp9c_400x400.png"
+        src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQSM_4AvKl2BnXL6_US8MljrdlVTCr6ZBaBuw&s"
       />
       <AvatarFallback>AceternityUI Logo</AvatarFallback>
     </Avatar>

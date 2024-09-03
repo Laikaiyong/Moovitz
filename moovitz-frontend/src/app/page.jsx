@@ -5,6 +5,7 @@ import Footer from "@/components/custom/Footer";
 import { ArchitectureBeam } from "@/components/custom/Architecture";
 import BentoDemo from "@/components/example/bento-demo";
 import { AuroraBackgroundDemo } from "@/components/aeternity/example/aurora-background";
+import { SiSolana } from "react-icons/si";
 
 export default function LandingPage() {
   return (
@@ -32,16 +33,12 @@ export default function LandingPage() {
           <div className="flex-1">
             <h2 className="text-xl lg:text-2xl font-semibold text-center lg:text-start">How Moovitz Works</h2>
             <p className="text-md lg:text-lg pt-6 w-full lg:w-[550px]">
-              At Moovitz, we integrated <span className="font-semibold"><a href="https://www.maschain.com/" target="_blank">Maschain</a></span> and <span className="font-semibold"><a href="https://sui.io/" target="_blank">Sui</a></span> to create a seamless platform for transparent fund collection. Adopting both these technologies, we are able to create a platform that is the best of both worlds.
+              At Moovitz, we built on <span className="font-semibold"><a href="https://www.solana.com/" target="_blank">Solana <SiSolana className="inline"/></a></span> to create a seamless platform for transparent fund collection. By adopting Solana, we are able to create a platform that is the best of both worlds.
             </p>
           </div>
           <div className="flex-1 lg:ml-8 mt-6 lg:mt-0">
             <ArchitectureBeam />
           </div>
-        </section>
-        {/* Call to Action */}
-        <section>
-
         </section>
         <Footer />
       </div>

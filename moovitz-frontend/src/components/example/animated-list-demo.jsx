@@ -5,7 +5,7 @@ import { AnimatedList } from "@/components/magicui/animated-list";
 let notifications = [
   {
     name: "Contribution Received",
-    description: "50 Sui",
+    description: "50 Sol",
     time: "15m ago",
 
     icon: "💸",

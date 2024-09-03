@@ -10,20 +10,24 @@ import AnimatedListDemo from "@/components/example/animated-list-demo";
 
 const files = [
   {
-    name: "Mas Wallet",
-    body: "MasChain runs a robust multi-sig wallet system. This system requires multiple approvals from our council members to execute any transaction, ensuring no single point of failure.",
+    name: "Clean UI",
+    body: "Moovitz was developed with clarity and cleanliness in mind, ensuring that users can easily navigate the platform without being tech savvy people.",
   },
   {
-    name: "Sui Wallet",
-    body: "Provides a comprehensive solution for viewing and managing your coins and NFTs, acquiring new digital assets, and transferring those you own with ease",
+    name: "Built on Solana",
+    body: "Users are able to login using Phantom to access their wallet and make contributions to the projects they want to support.",
   },
+  {
+    name: "Low Gas Fees",
+    body: "Moovitz offers low gas fees, ensuring that users can make transactions without breaking the bank",
+  }
 ];
 
 const features = [
   {
     Icon: FileTextIcon,
-    name: "Flexible Wallets",
-    description: "Users can sign in via Mas or Sui Wallet.",
+    name: "Seamless User Experience",
+    description: "Prioritizing UX from A to Z.",
     href: "#",
     cta: "Learn more",
     className: "col-span-3 lg:col-span-1",

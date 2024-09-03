@@ -8,7 +8,7 @@ export default function Footer() {
                 Copyright 2024 © All Rights Reserved 
             </p>
             <p className="w-1/3 text-end">
-                Brought to you by <span className="underline">Bridg2</span>
+                Brought to you by <span className="underline">Googie</span>
             </p>
         </footer>
     );

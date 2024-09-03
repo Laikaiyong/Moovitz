@@ -49,23 +49,12 @@ export default function Navbar() {
             </a>
           </li>
         </ul>
-        <a href="/transport" className="mt-4 lg:mt-0 lg:ml-4 lg:hidden">
-|
-          <ShimmerButton>
-          <a href="/transport" className="flex">
-            <p>Sign In</p>
-          </a>
-        </ShimmerButton>
-         
-        </a>
       </div>
-      <a href="/transport" className="mt-4 lg:mt-0 lg:ml-4 hidden lg:block z-30">
-          <ShimmerButton>
+      <ShimmerButton className="mt-4 lg:mt-0 lg:ml-4 hidden lg:block z-30">
           <a href="/transport" className="flex">
             <p>Sign In</p>
           </a>
-        </ShimmerButton>
-      </a>
+      </ShimmerButton>
     </nav>
   );
 }
