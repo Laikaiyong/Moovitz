@@ -52,7 +52,7 @@ export default function Navbar() {
       </div>
       <ShimmerButton className="mt-4 lg:mt-0 lg:ml-4 hidden lg:block z-30">
           <a href="/transport" className="flex">
-            <p>Sign In</p>
+            <p>Home</p>
           </a>
       </ShimmerButton>
     </nav>
