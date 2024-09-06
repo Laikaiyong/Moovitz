@@ -11,18 +11,11 @@ let notifications = [
     color: "#00C9A7",
   },
   {
-    name: "Card Reload: 50 Sui",
+    name: "Card Reload: 50 Sol",
     description: "Moovitz Payment",
     time: "4d ago",
     icon: "💳",
     color: "#FFB800",
-  },
-  {
-    name: "Token Conversion",
-    description: "Moovitz ➡️ Sui",
-    time: "4d ago",
-    icon: "🔄",
-    color: "#FF3D71",
   },
   {
     name: "Payment for Bus Ride",
@@ -35,7 +28,6 @@ let notifications = [
     name: "Contribution Made",
     description: "Kiara Valley Station",
     time: "14m ago",
-
     icon: "💸",
     color: "#00C9A7",
   },
